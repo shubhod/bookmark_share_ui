@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.6.1",
     "craco-plugin-scoped-css": "^1.1.0",
+    "gsap": "^3.5.1",
     "jquery": "^3.5.1",
     "jquery-ui": "^1.12.1",
     "react": "^16.13.1",

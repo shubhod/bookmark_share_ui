@@ -3,17 +3,21 @@ import "antd/dist/antd.css";
 import { CaretDownOutlined } from "@ant-design/icons";
 import { Menu, Space } from "antd";
 import "./ScssEditorControl.scss";
+import {gsap,Draggable,TweenLite } from "gsap/all";
+
 import {
   GenerateControlMenu,
   GenerateFontFamily,
 } from "./GenerateControls/GenerateControls";
 import { FONT_FAMILY, CONTROL_NAME_MAPS } from "./constants.js";
-import $ from "jquery";
+import m from "jquery";
+import resizable from "jquery-ui";
 const { SubMenu } = Menu;
+gsap.registerPlugin(TweenLite,Draggable);
 
 export const ViewEditorControl = () => {
-  const [textArea, setTextArea] = useState(null);
-  const [target, setTarget] = useState(null);
+  const [text, setText] = useState([]);
+  const [imgList,setImgList] =useState([]);
   const [current, setcurrent] = useState(null);
   const [fontControl, setFontControl] = useState({
     fontFamily: "Font",
@@ -21,8 +25,14 @@ export const ViewEditorControl = () => {
   });
 
   useEffect(() => {
-    $("#textArea").focus();
+    m("#textArea").focus();
+    console.log(resizable);
   }, []);
+  useEffect(()=>{
+      // let img=$("#"+imgList[imgList.length-1]);
+      
+      // img.resizable();
+  },[imgList.length]);
 
   var handleContentEditable = (event) => {
     var fontArray = event.target.getElementsByTagName("font");
@@ -41,13 +51,14 @@ export const ViewEditorControl = () => {
     }
   };
 
-  var execCmdEditor = (cmd, value,attrId) => {
+  var execCmdEditor = (cmd, value, attrId) => {
     var newFontControl = null;
     if (cmd == "insertHTML") {
-      document.execCommand(cmd, true, value);      
-    } 
-    else {
-      document.execCommand(cmd, false, value);
+      document.execCommand(cmd, true, value);
+      setImgList(oldArray=>[...oldArray,attrId]);
+
+    } else {
+      document.execCommand(cmd,false, value);
     }
 
     if (cmd == "fontName") {
@@ -72,6 +83,7 @@ export const ViewEditorControl = () => {
 
   let fontName = GenerateControlMenu(FONT_FAMILY, "fontName", execCmdEditor);
   let fontSize = GenerateControlMenu([...Array(7)], "fontSize", execCmdEditor);
+  console.log(fontName);
 
   return (
     <Space direction="vertical" className="Editor-Text-Container">
@@ -111,6 +123,7 @@ export const ViewEditorControl = () => {
       >
         <div id="editArea">
           <font contentEditable face={fontControl.fontFamily} />
+          {text}
         </div>
       </div>
     </Space>
