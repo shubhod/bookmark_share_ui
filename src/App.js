@@ -1,9 +1,9 @@
 import React from 'react';
-import  ViewEditorWrapper from './components/Editor/EditorWrapper/ViewEditorWrapper'
+import  TextEditor from './container/AllNotes';
 function App() {
   return (
     <div>      
-      <ViewEditorWrapper/>
+      <TextEditor/>
     </div>
   );
 }
