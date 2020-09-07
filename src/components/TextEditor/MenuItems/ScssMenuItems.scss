@@ -1,13 +1,13 @@
 .EditorLayout {
   width: 100%;
-  background-color: #BACDCB;
+  //background-color: #BACDCB;
 }
 
 .EditorLayout__MenuBarHeader{
   position:fixed; 
   z-index:2 ;
   width:100%;
-  background-color:#BACDCB ;
+  background-color:white;//#BACDCB ;
 
  }
 
@@ -24,7 +24,7 @@
   box-shadow: $boxshadow;
   min-height: 40px;
   width: 55vw;
-  margin: 10px auto;
+  // margin: 10px auto;
   background: white;
   border-radius: $borderRadius;
 }

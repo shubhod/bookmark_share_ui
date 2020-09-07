@@ -1,7 +1,7 @@
 import React, { useState, createContext, useEffect } from "react";
 import "antd/dist/antd.css";
 import { CaretDownOutlined } from "@ant-design/icons";
-import {Layout,Menu } from "antd";
+import { Layout, Menu } from "antd";
 import "./ScssMenuItems.scss";
 import ViewTextArea from "../TextArea/ViewTextArea";
 import { GenerateMenuItems } from "./GenerateMenuItems/GenerateMenuItems";
@@ -61,38 +61,42 @@ export const ViewMenuItems = (props) => {
   let fontName = GenerateMenuItems(FONT_FAMILY, "fontName", execCmdEditor);
   let fontSize = GenerateMenuItems([...Array(7)], "fontSize", execCmdEditor);
   return (
-    <Layout  className="EditorLayout">
+    <Layout className="EditorLayout">
       <Layout.Header className="EditorLayout__MenuBarHeader">
-          <Menu
-            className="EditorLayout__MenuBarHeader__MenuBar"
-            onMouseDown={(event) => {
-              event.preventDefault();
-            }}
-            mode="horizontal"
+        <Menu
+          className="EditorLayout__MenuBarHeader__MenuBar"
+          onMouseDown={(event) => {
+            event.preventDefault();
+          }}
+          onClick={()=>{alert("hello whatsapp")}}
+          mode="horizontal"
+        >
+          <SubMenu
+            title={fontControl.fontFamily}
+            icon={<CaretDownOutlined className="subMenu_FontIcon" />}
+            className="EditorLayout__SubMenuBar"
           >
-            <SubMenu
-              title={fontControl.fontFamily}
-              icon={<CaretDownOutlined className="subMenu_FontIcon" />}
-              className="EditorLayout__SubMenuBar"
-            >
-              {fontName}
-            </SubMenu>
-            <SubMenu
-              title={fontControl.fontSize}
-              icon={<CaretDownOutlined className="subMenu_FontIcon" />}
-              className="EditorLayout__SubMenuBar"
-            >
-              {fontSize}
-            </SubMenu>
-            {controls}
-            <br />
-          </Menu>
+            {fontName}
+          </SubMenu>
+          <SubMenu
+            title={fontControl.fontSize}
+            icon={<CaretDownOutlined className="subMenu_FontIcon" />}
+            className="EditorLayout__SubMenuBar"
+          >
+            {fontSize}
+          </SubMenu>
+          {controls}
+          <br />
+        </Menu>
       </Layout.Header>
-      <Layout.Content className="site-layout" style={{ padding: '0 130px', marginTop:10 }}>
-      <ViewTextArea
-        handleContentEditable={handleContentEditable}
-        fontControl={fontControl}
-      />
+      <Layout.Content
+        className="site-layout"
+        style={{ padding: "0 ", marginTop: 10, width: "100%" }}
+      >
+        <ViewTextArea
+          handleContentEditable={handleContentEditable}
+          fontControl={fontControl}
+        />
       </Layout.Content>
       {/* </Space> */}
     </Layout>
