@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Layout, Space, Menu } from "antd";
-import { ViewMenuItems } from "../../components/TextEditor/MenuItems/ViewMenuItems";
+import { Editor } from "../TextEditor/Editor";
 import "./ScssAllNotes.scss";
 const { Content, Sider } = Layout;
 var AllNotes = () => {
@@ -31,7 +31,6 @@ var AllNotes = () => {
           console.log(collapsed, type);
         }}
       >
-        <div className="logo" />
         <Menu theme="dark" mode="inline" selectable={false}>
           <Menu.Item key="1">nav 1</Menu.Item>
           <Menu.Item key="2">nav 2</Menu.Item>
@@ -40,7 +39,6 @@ var AllNotes = () => {
         </Menu>
       </Sider>
       <Sider style={{ marginLeft: 210 }} className="AllNotes_Sider">
-        <div className="logo" />
         <Menu theme="dark" mode="inline" selectable={false}>
           <Menu.Item key="1">nav 1</Menu.Item>
           <Menu.Item key="2">nav 2</Menu.Item>
@@ -54,7 +52,7 @@ var AllNotes = () => {
           padding: "0px 0px 0px 0px",
         }}
       >
-        <ViewMenuItems />
+        <Editor />
       </Content>
     </Layout>
   );

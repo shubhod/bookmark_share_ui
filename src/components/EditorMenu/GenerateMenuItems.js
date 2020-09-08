@@ -1,8 +1,8 @@
 import React, { useContext, useRef } from "react";
-import { EDITOR_MENU_ICONS } from "../constants";
+import { EDITOR_MENU_ICONS } from "./constants";
 import "antd/dist/antd.css";
 import { Menu } from "antd";
-import "./ScssGenerateMenuItems.scss";
+import "./ScssMenuItems.scss";
 
 var countImg = 0;
 export const GenerateMenuItems = (

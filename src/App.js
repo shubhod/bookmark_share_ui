@@ -1,9 +1,15 @@
 import React from 'react';
-import  TextEditor from './container/AllNotes/NoteBook';
+import  TextEditor from './screens/Main/NoteBook';
+import  SideBar from './components/SideBar/SideBarComponent';
+import {Layout} from "antd";
 function App() {
   return (
-    <div>      
-      <TextEditor/>
+    <div>
+      <Layout>
+        <SideBar
+        />
+      </Layout>
+          
     </div>
   );
 }
