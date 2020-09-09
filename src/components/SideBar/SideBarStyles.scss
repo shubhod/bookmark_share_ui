@@ -1,6 +1,39 @@
-.MainScreenSideBar{
-    min-width: 250px !important;
-    height: 100vh;
-    left: 0;
-    position: fixed;
+$fontFamily: 'Inconsolata', monospace;  
+
+$bgcolr: #511c29;
+$imp: !important;
+.mainScreenSideBar {
+  min-width: 250px $imp;
+  height: 100vh;
+  margin-left: 0px;
+  background-color: $bgcolr;
+}
+
+.mainScreenSideBar__Menu {
+  background-color: $bgcolr $imp;
+  font-family: $fontFamily;
+}
+.mainScreenSideBar_img_logo {
+  height: 100px;
+}
+.mainScreenSideBar_logo_heading {
+    color:whitesmoke;
+    font-family: 'Catamaran', sans-serif;
+    margin-left:-40px $imp;
+    font-size:25px;
+}
+.btnAddNotes {
+  $bgcolr: #db324d;
+  background-color: $bgcolr;
+  border: none;
+  font-family: $fontFamily;
+  &:focus {
+    background-color: $bgcolr;
+  }
+  &:hover {
+    background-color: $bgcolr;
+  }
+}
+.icnPlusOutlined {
+  margin-left: -80px $imp;
 }

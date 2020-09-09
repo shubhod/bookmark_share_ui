@@ -7,7 +7,7 @@ import {
   EDITOR_MENU_ICONS
 } from "../../components/EditorMenu/constants.js";
 import TextEditorMenuItems from "../../components/EditorMenu/EditorMenuComponent";
-export const Editor = (props) => {
+export const Editor = () => {
   const [imgList, setImgList] = useState([]);
   const [fontControl, setFontControl] = useState({
     fontName: "Font",
@@ -18,7 +18,7 @@ export const Editor = (props) => {
 
   useEffect(() => {
     textAreaRef.current.focus();
-    document.execCommand("insertHTML", true, props.html);
+    document.execCommand("insertHTML",true,html);
   }, []);
 
   const saveTextAreaHtml = (event) => {
