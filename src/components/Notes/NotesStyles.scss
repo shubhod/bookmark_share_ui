@@ -1,0 +1,34 @@
+@import "../../variables.scss";
+.notes {
+  min-width: 300px $imp;
+  width: 40%;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  background-color: #e5ece9;
+  font-family: "Lora", serif;
+  #{&}__header {
+    color: red($color: #000000);
+    font-size: 15px;
+    font-weight:700;    
+  }
+
+  #{&}__content {
+
+    margin-top: 25px;
+    text-overflow: break;
+    padding-bottom: 10px;
+    color:#53917E;
+    line-height: 17px  ;
+    font-weight: 500;
+
+  }
+
+  #{&}__footer {
+    
+    margin-top: 40px;
+    color:#53917E;
+    font-size: 15px;
+    font-weight: 500px;
+  }
+}
