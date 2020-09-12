@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import MainScreen from './screens/Main/MainScreen';
-import TabsCard from './components/Notes/NotesComponent';
+import NotesIndex from './components/NotesIndex/NotesIndexComponent';
 //<MainScreen />
 ReactDOM.render(
-   <TabsCard/>,
+   <NotesIndex/>,
   document.getElementById('root')
 );

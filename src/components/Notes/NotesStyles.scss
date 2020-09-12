@@ -1,11 +1,37 @@
 @import "../../variables.scss";
+$notes_bgColor:#e5ece9;
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 2, $bgColor: white){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount; 
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColor;
+  }
+}
 .notes {
-  min-width: 300px $imp;
-  width: 40%;
+  min-width: 200px $imp ;
+  position:relative;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
   border: 2px solid black;
-  display: flex;
-  flex-direction: column;
-  background-color: #e5ece9;
+  background-color:$notes_bgColor;
   font-family: "Lora", serif;
   #{&}__header {
     color: red($color: #000000);
@@ -14,19 +40,15 @@
   }
 
   #{&}__content {
-
-    margin-top: 25px;
-    text-overflow: break;
-    padding-bottom: 10px;
+    margin-top: 15px;
+    position: absolute;
+    padding-bottom: 20px;
     color:#53917E;
-    line-height: 17px  ;
     font-weight: 500;
+    @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 2, $bgColor:$notes_bgColor);  
 
   }
-
   #{&}__footer {
-    
-    margin-top: 40px;
     color:#53917E;
     font-size: 15px;
     font-weight: 500px;
