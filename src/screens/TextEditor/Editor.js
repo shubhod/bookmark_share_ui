@@ -80,8 +80,8 @@ export const Editor = () => {
     execCmdEditor
   );
   return (
-    <Layout className="EditorLayout">
-      <TextEditorMenuItems
+    <>
+      {/* <TextEditorMenuItems
         fontName={subMenuFontName}
         fontSize={subMenuFontSize}
         genericMenuItems={genericMenuItems}
@@ -92,7 +92,7 @@ export const Editor = () => {
         fontControl={fontControl}
         textAreaRef={textAreaRef}
         saveTextAreaHtml={saveTextAreaHtml}
-      />
-    </Layout>
+      /> */}
+    </>
   );
 };

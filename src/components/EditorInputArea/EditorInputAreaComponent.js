@@ -6,7 +6,6 @@ export default (props)=> {
   let { saveTextAreaHtml, textAreaRef, handleContentEditable } = props;
   return (
     <Layout.Content
-      className="site-layout"
       style={{ padding: "0 ", marginTop: 10, width: "100%" }}
     >
       <div

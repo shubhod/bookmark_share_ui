@@ -1,15 +1,16 @@
 $fontFamily: 'Inconsolata', monospace;  
-$bgcolr: #511c29;
+$bgColrSideBar: #511c29;
+$btnBgColrAddNotes: #db324d;
 $imp: !important;
 .mainScreenSideBar {
   min-width: 250px $imp;
   height: 100vh;
   margin-left: 0px;
-  background-color: $bgcolr;
+  background-color: $bgColrSideBar $imp;
 }
 
 .mainScreenSideBar__Menu {
-  background-color: $bgcolr $imp;
+  background-color: $bgColrSideBar $imp;
   font-family: $fontFamily;
 }
 .mainScreenSideBar_img_logo {
@@ -22,15 +23,14 @@ $imp: !important;
     font-size:25px;
 }
 .btnAddNotes {
-  $bgcolr: #db324d;
-  background-color: $bgcolr;
-  border: none;
+  background-color: $btnBgColrAddNotes $imp;
+  border: none $imp;
   font-family: $fontFamily;
   &:focus {
-    background-color: $bgcolr;
+    background-color: $btnBgColrAddNotes;
   }
   &:hover {
-    background-color: $bgcolr;
+    background-color: $btnBgColrAddNotes;
   }
 }
 .icnPlusOutlined {

@@ -52,7 +52,7 @@ var AllNotes = () => {
           padding: "0px 0px 0px 0px",
         }}
       >
-        <Editor />
+        {/* <Editor /> */}
       </Content>
     </Layout>
   );
