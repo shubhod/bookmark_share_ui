@@ -1,0 +1,28 @@
+.EditorInputAreaContent{
+  // style={{ margin: '24px 16px 0', overflow: 'initial' }}
+  // margin-left: 1000px;
+  // position: fixed;
+}
+
+.card {
+  border-radius: 2px;
+  padding-top: 20px;   
+}
+  [contenteditable] {
+    outline: 10px solid transparent;
+    overflow-wrap: break-word;
+    overflow-y:scroll;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+
+
+  }
+  
+  .card-1:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+  .inputArea{
+    height: 100%;
+    overflow-x: hidden;
+  }

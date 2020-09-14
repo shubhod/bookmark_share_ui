@@ -1,9 +1,7 @@
 .allNotes{
-display: flex;
-flex-direction: column;
-width: 20%;
 height:100%;
-border: 2px solid yellow;
-position:fixed;
-background-color: red;
+background-color: #EFFFFA;
+flex-basis: 300px;
+width:100px;
+position: relative;
 }

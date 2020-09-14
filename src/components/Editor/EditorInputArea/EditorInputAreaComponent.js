@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Layout } from "antd";
+import React, { useState,useContext } from "react";
+import { Layout, Space } from "antd";
 import "./ScssTextEditorInputArea.scss";
-
+import { EditorContext } from "../../../screens/EditorContainer/EditorScreen";
 export default (props)=> {
-  let { saveTextAreaHtml, textAreaRef, handleContentEditable } = props;
+  let { saveTextAreaHtml, textAreaRef, handleContentEditable } =useContext(EditorContext);
+  console.log(handleContentEditable);
   return (
-    <Layout.Content
-      style={{ padding: "0 ", marginTop: 10, width: "100%" }}
-    >
+    <div className="inputArea">
       <div
         contentEditable
         className="card"
@@ -21,6 +20,6 @@ export default (props)=> {
           handleContentEditable(event);
         }}
       />
-    </Layout.Content>
+      </div>
   );
 };

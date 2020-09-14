@@ -6,13 +6,11 @@ const Notes = (props) => {
     return (
       <div  className="notes">
         <div className="notes__header">fsdfsfsfsf</div>
-        <div className="notes__content">dasddddddddddddasssssssssssssssssssssssssssssssss
-        sssssssssssssssssssssssssssssssssssssssssssssssssdqwwwwwwwwwwwwwwwwwwwdsaaaaa
-        sssssssssssssssssssssssssssssssssssssssssssssssssdqwwwwwwwwwwwwwwwwwwwdsaaaaa
-        sssssssssssssssssssssssssssssssssssssssssssssssssdqwwwwwwwwwwwwwwwwwwwdsaaaaa
-        sssssssssssssssssssssssssssssssssssssssssssssssssdqwwwwwwwwwwwwwwwwwwwdsaaaaadeep
-        sssssssssssssssssssssssssssssssssssssssssssssssssdqwwwwwwwwwwwwwwwwwwwdsaaaaadeep
-        w</div>
+        <div className="notes__content">dasddddddddddddassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdqwwwwwwwwwwwwwwwwwwwdsaaaaadeep
+        sssssssssssssssssssssssssssssssssssssssssssssssssdqwwwwwwwwwwwwwwwwwwwdsaaaaasssssssssssssssssssssssssssssssssssssssssssssssssdqwwwwwwwwwwwwwwwwwwwdsaaaaadeep
+        sssssssssssssssssssssssssssssssssssssssssssssssssdqwwwwwwwwwwwwwwwwwwwdsaaaaasssssssssssssssssssssssssssssssssssssssssssssssssdqwwwwwwwwwwwwwwwwwwwdsaaaaadeep
+        sssssssssssssssssssssssssssssssssssssssssssssssssdqwwwwwwwwwwwwwwwwwwwdsaaaaasssssssssssssssssssssssssssssssssssssssssssssssssdqwwwwwwwwwwwwwwwwwwwdsaaaaadeep
+        </div>
         <div className="notes__footer">fdsfsdfsdf</div>
       </div>
     );

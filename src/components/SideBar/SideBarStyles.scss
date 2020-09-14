@@ -3,10 +3,10 @@ $bgColrSideBar: #511c29;
 $btnBgColrAddNotes: #db324d;
 $imp: !important;
 .mainScreenSideBar {
-  min-width: 250px $imp;
   height: 100vh;
   margin-left: 0px;
   background-color: $bgColrSideBar $imp;
+  flex-basis: 300px;
 }
 
 .mainScreenSideBar__Menu {
@@ -34,5 +34,8 @@ $imp: !important;
   }
 }
 .icnPlusOutlined {
-  margin-left: -80px $imp;
+  margin-left: -90px $imp;
+}
+.sideBarMinWidth{
+  min-width: 250px $imp;
 }

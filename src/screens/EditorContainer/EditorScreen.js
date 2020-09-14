@@ -1,24 +1,21 @@
-import React, { useState,useRef,useEffect } from "react";
-import { Layout } from "antd";
-import EditorInputAreaComponent from "../../components/EditorInputArea/EditorInputAreaComponent";
-import { GenerateMenuItems } from "../../components/EditorMenu/GenerateMenuItems";
-import {
-  FONT_FAMILY,
-  EDITOR_MENU_ICONS
-} from "../../components/EditorMenu/constants.js";
-import TextEditorMenuItems from "../../components/EditorMenu/EditorMenuComponent";
+import React, { useState, useRef, useEffect, createContext } from "react";
+import EditorComponent from "../../components/Editor/EditorComponent";
+
+export const EditorContext = React.createContext(null);
+
 export const Editor = () => {
-  const [imgList, setImgList] = useState([]);
   const [fontControl, setFontControl] = useState({
     fontName: "Font",
     fontSize: "fontSize",
   });
+
   const [html, setHtml] = useState(`<div><br/></div>`);
+
   const [textAreaRef, setTextAreaRef] = useState(useRef(null));
 
   useEffect(() => {
     textAreaRef.current.focus();
-    document.execCommand("insertHTML",true,html);
+    document.execCommand("insertHTML", true, html);
   }, []);
 
   const saveTextAreaHtml = (event) => {
@@ -41,11 +38,11 @@ export const Editor = () => {
       newFontControl.fontName = "Font";
     }
   };
-  var execCmdEditor = (cmd, value, attrId) => {
+
+  var onExecCmd = (cmd, value, attrId) => {
     var newFontControl = null;
     if (cmd == "insertHTML") {
       document.execCommand(cmd, true, value);
-      setImgList((oldArray) => [...oldArray, attrId]);
     } else {
       document.execCommand(cmd, false, value);
     }
@@ -62,37 +59,19 @@ export const Editor = () => {
     }
   };
 
-  let genericMenuItems = GenerateMenuItems(
-    Object.keys(EDITOR_MENU_ICONS),
-    "menu",
-    execCmdEditor
-  );
-
-  let subMenuFontName = GenerateMenuItems(
-    FONT_FAMILY,
-    "fontName",
-    execCmdEditor
-  );
-  
-  let subMenuFontSize = GenerateMenuItems(
-    [...Array(7)],
-    "fontSize",
-    execCmdEditor
-  );
   return (
     <>
-      {/* <TextEditorMenuItems
-        fontName={subMenuFontName}
-        fontSize={subMenuFontSize}
-        genericMenuItems={genericMenuItems}
-        fontControl={fontControl}
-      />
-      <EditorInputAreaComponent
-        handleContentEditable={handleContentEditable}
-        fontControl={fontControl}
-        textAreaRef={textAreaRef}
-        saveTextAreaHtml={saveTextAreaHtml}
-      /> */}
+      <EditorContext.Provider
+        value={{
+          onExecCmd: onExecCmd,
+          fontControl: fontControl,
+          handleContentEditable: handleContentEditable,
+          textAreaRef: textAreaRef,
+          saveTextAreaHtml: saveTextAreaHtml,
+        }}
+      >
+        <EditorComponent />
+      </EditorContext.Provider>
     </>
   );
 };

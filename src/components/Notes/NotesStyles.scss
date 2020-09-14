@@ -1,5 +1,5 @@
 @import "../../variables.scss";
-$notes_bgColor:#e5ece9;
+$notes_bgColor:#EFFFFA;
 @mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 2, $bgColor: white){
   overflow: hidden;
   position: relative;
@@ -9,7 +9,7 @@ $notes_bgColor:#e5ece9;
   margin-right: -1em;
   padding-right: 1em;
   &:before {
-    content: '...';
+    content: '';
     position: absolute;
     right: 0;
     bottom: 0;
@@ -25,15 +25,14 @@ $notes_bgColor:#e5ece9;
   }
 }
 .notes {
-  min-width: 200px $imp ;
-  position:relative;
-  width: 100%;
   padding-left: 20px;
-  padding-right: 20px;
-  border: 2px solid black;
+  padding-right: 30px;
+  padding-top: 5px;
+  border-bottom: 1px solid 	#D3D3D3;
   background-color:$notes_bgColor;
   font-family: "Lora", serif;
-  #{&}__header {
+
+  #{&}__header {  
     color: red($color: #000000);
     font-size: 15px;
     font-weight:700;    
@@ -44,7 +43,7 @@ $notes_bgColor:#e5ece9;
     position: absolute;
     padding-bottom: 20px;
     color:#53917E;
-    font-weight: 500;
+    font-weight: 100px;
     @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 2, $bgColor:$notes_bgColor);  
 
   }

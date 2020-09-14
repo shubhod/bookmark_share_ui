@@ -1,1 +1,10 @@
-
+body{
+    height: 100%;   
+    overflow: hidden; 
+    margin: 0px;  
+    display: flex;  
+}
+.appContainer{
+    display: flex;
+    height: 100%;
+}

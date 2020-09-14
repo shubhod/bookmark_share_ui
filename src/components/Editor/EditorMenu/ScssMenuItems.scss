@@ -1,14 +1,8 @@
-.EditorLayout {
-  width: 100%;
-  //background-color: #BACDCB;
-}
-
 .EditorLayout__MenuBarHeader{
-  position:fixed; 
-  z-index:2 ;
-  width:100%;
-  background-color:white;//#BACDCB ;
-
+  // position:fixed; 
+  // margin-left:550px;
+  // width:600px;
+  // padding: 0;
  }
 
  .EditorLayout__MenuBarHeader__MenuBar {
@@ -22,11 +16,9 @@
   );
   $borderRadius: 5px;
   box-shadow: $boxshadow;
-  min-height: 40px;
-  width: 55vw;
-  // margin: 10px auto;
   background: white;
   border-radius: $borderRadius;
+  
 }
 
 
@@ -36,8 +28,7 @@
 
 .subMenu_FontIcon {
   float: right;
-  margin-top: 25px;
-  
+  margin-top: 18px;
   margin-left: 3px;
 }
 input {
