@@ -1,0 +1,31 @@
+@import "../../variables.scss";
+$ant-list-item-background-color: #EFFFFA;
+
+.ant-list-item  {
+    display: flex;
+    background-color: $ant-list-item-background-color;
+    flex-basis: 900px;
+    flex-direction: column;
+    align-items: flex-start;
+    color: rgba(0, 0, 0, 0.85);
+    font-family:$Raleway;
+    padding-bottom: 20px;
+    #{&}__content{
+        position: absolute;
+        margin-top: 30px;
+    }
+    #{&}__heading{
+        padding-top: 0;
+        font-size: 30px;
+    }
+    #{&}__footer{
+        margin-top: 40px;
+        font-size:15px;
+        
+    }
+}
+.ant-list {
+
+    line-height: 1;
+
+}

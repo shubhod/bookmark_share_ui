@@ -1,28 +1,31 @@
-.EditorInputAreaContent{
-  // style={{ margin: '24px 16px 0', overflow: 'initial' }}
-  // margin-left: 1000px;
-  // position: fixed;
-}
+@import "../../../variables.scss";
 
-.card {
-  border-radius: 2px;
-  padding-top: 20px;   
-}
-  [contenteditable] {
-    outline: 10px solid transparent;
-    overflow-wrap: break-word;
-    overflow-y:scroll;
-    background-color: white;
-    height: 100%;
-    width: 100%;
-
-
-  }
+.editor-input-area {
+  overflow: hidden;
+  height: 100%;
   
-  .card-1:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  }
-  .inputArea{
-    height: 100%;
-    overflow-x: hidden;
-  }
+}
+.editor-input-area__content {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color:white;
+
+}
+.editor-input-area__content__input {
+  padding-top: 8%;
+  border: none;
+  font-family: Catamaran;
+  font-size: 25px;
+}
+[contenteditable] {
+  outline: 10px solid transparent;
+  flex: 1;
+  word-wrap: break-word;
+  word-break: break-all;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}

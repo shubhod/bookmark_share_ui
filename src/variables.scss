@@ -1,12 +1,12 @@
-$fontFamily: (
-    'Inconsolata':"'Inconsolata', monospace",
-    'Catamaran':"'Catamaran', sans-serif"
-);
-$font-weight:(
-    "regular":400,
-    "medium":500,
-    "bold":700
-);
+    $Inconsolata:'Inconsolata', monospace;
+    $Catamaran:'Catamaran', sans-serif;
+    $Raleway:'Raleway', sans-serif;
+
+    $font-weight:(
+        "regular":400,
+        "medium":500,
+        "bold":700
+    );
 
 $imp:!important;
  

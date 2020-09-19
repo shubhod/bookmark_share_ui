@@ -12,7 +12,10 @@
     "jquery-ui": "^1.12.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
     "react-scripts": "3.4.3",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "sanitize-html": "^1.27.3"
   },
   "scripts": {
@@ -35,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "remote-redux-devtools": "^0.5.16"
   }
 }

@@ -1,9 +1,11 @@
-import React, { useState, useRef, useEffect, createContext } from "react";
+import React, { useState, useRef, useEffect} from "react";
+import {useSelector} from 'react-redux';
 import EditorComponent from "../../components/Editor/EditorComponent";
 
 export const EditorContext = React.createContext(null);
 
 export const Editor = () => {
+  const allNotes=useSelector(state => state.mainNavReducer.allNotes);
   const [fontControl, setFontControl] = useState({
     fontName: "Font",
     fontSize: "fontSize",
@@ -68,6 +70,7 @@ export const Editor = () => {
           handleContentEditable: handleContentEditable,
           textAreaRef: textAreaRef,
           saveTextAreaHtml: saveTextAreaHtml,
+          allNotes:allNotes
         }}
       >
         <EditorComponent />

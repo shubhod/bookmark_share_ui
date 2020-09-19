@@ -3,10 +3,10 @@ $bgColrSideBar: #511c29;
 $btnBgColrAddNotes: #db324d;
 $imp: !important;
 .mainScreenSideBar {
-  height: 100vh;
+  height: 100%;
   margin-left: 0px;
   background-color: $bgColrSideBar $imp;
-  flex-basis: 300px;
+  flex-basis:300px;
 }
 
 .mainScreenSideBar__Menu {

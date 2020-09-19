@@ -1,13 +1,13 @@
 import React from "react";
-import { Layout } from "antd";
-import MainNavSideBar from "./screens/MainNavSideBar/MainNavSideBar";
+import MainNav from "./screens/MainNav/MainNavScreen";
 import { Editor } from "./screens/EditorContainer/EditorScreen";
 function App() {
   return (
     <div className="appContainer">
-      <MainNavSideBar />
+      <MainNav />
       <Editor />
     </div>
+
   );
 }
 

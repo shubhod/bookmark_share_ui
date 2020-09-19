@@ -1,10 +1,10 @@
-
 .editorWrapper{
     display: flex;
     flex-direction: column;
-    height: 1200px;
-    flex-wrap: column wrap;
-    flex-basis:1000px;
-    width:1000px;
+    height: 100%;
+    flex-basis:100%;
+    min-width:50%;
+    flex-grow:1;
+
 
 }
