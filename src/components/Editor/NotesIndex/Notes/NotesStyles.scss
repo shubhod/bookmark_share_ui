@@ -1,5 +1,5 @@
 @import "../../../../variables.scss";
-$notes_bgColor:	#F8F8F8;
+$notes_bgColor:	#F0F0F0	;
 @mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 2, $bgColor: white){
   overflow: hidden;
   position: relative;

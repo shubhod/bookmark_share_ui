@@ -18,3 +18,4 @@ export const SIDE_BAR_MENU_ICONS = [
   <UsergroupAddOutlined style={iconStyle}/>,
   <DeleteOutlined style={iconStyle}/>,
 ];
+

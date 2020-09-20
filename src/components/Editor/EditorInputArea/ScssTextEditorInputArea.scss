@@ -1,21 +1,18 @@
 @import "../../../variables.scss";
-
 .editor-input-area {
   overflow: hidden;
   height: 100%;
-  
 }
 .editor-input-area__content {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color:white;
-
+  background-color: white;
 }
 .editor-input-area__content__input {
-  padding-top: 8%;
-  border: none;
+  padding-top:4%;
+  border:none;
   font-family: Catamaran;
   font-size: 25px;
 }

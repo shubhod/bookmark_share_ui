@@ -28,7 +28,7 @@ const SideBarContent = () => {
           type="primary"
           className="btnAddNotes"
           icon={<PlusOutlined className="icnPlusOutlined" />}
-          onClick={()=>{menuProps.onClick()}}
+          onClick={()=>{menuProps.onClickAddNotes()}}
           size="large"
         >
           add Notes

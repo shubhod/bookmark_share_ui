@@ -1,5 +1,6 @@
 $fontFamily: 'Inconsolata', monospace;  
 $bgColrSideBar: #511c29;
+@import "../../variables.scss";
 $btnBgColrAddNotes: #db324d;
 $imp: !important;
 .mainScreenSideBar {
@@ -7,6 +8,7 @@ $imp: !important;
   margin-left: 0px;
   background-color: $bgColrSideBar $imp;
   flex-basis:300px;
+  box-shadow:$boxshadow;
 }
 
 .mainScreenSideBar__Menu {

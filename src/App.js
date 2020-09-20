@@ -1,7 +1,7 @@
 import React from "react";
 import MainNav from "./screens/MainNav/MainNavScreen";
 import { Editor } from "./screens/EditorContainer/EditorScreen";
-function App() {
+const  App=()=>{
   return (
     <div className="appContainer">
       <MainNav />

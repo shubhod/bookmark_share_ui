@@ -2,7 +2,7 @@ import React from "react";
 import { Menu } from "antd";
 import "./MenuStyles.scss"
 export const MenuItemsComponent=(props) => {
-  let {menuIcons,menuItems,className,onClick}=props;
+  let {menuIcons,menuItems,className,onClickMenuItem}=props;
   return menuItems.map((menuItem, index) => {
     return (
       <Menu.Item
@@ -10,7 +10,7 @@ export const MenuItemsComponent=(props) => {
         key={menuItem + index}
         icon={menuIcons[index]}
         onClick={() => {  
-          onClick();
+          onClickMenuItem();
         }}
       >
         {menuItem}

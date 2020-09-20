@@ -1,10 +1,13 @@
 import React, { useState, useRef, useEffect} from "react";
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import EditorComponent from "../../components/Editor/EditorComponent";
+import { addNote } from "../MainNav/mainNavRedux/MainNavActions";
+import { setNotesContent } from "../../helper/setNotesContent";
 
 export const EditorContext = React.createContext(null);
 
 export const Editor = () => {
+  const editorDispatch=useDispatch(); 
   const allNotes=useSelector(state => state.mainNavReducer.allNotes);
   const [fontControl, setFontControl] = useState({
     fontName: "Font",
@@ -13,11 +16,16 @@ export const Editor = () => {
 
   const [html, setHtml] = useState(`<div><br/></div>`);
 
-  const [textAreaRef, setTextAreaRef] = useState(useRef(null));
-
+  const contentEditableRef=useRef(null);
+  const notesTitle=useRef(null);
+  
   useEffect(() => {
-    textAreaRef.current.focus();
     document.execCommand("insertHTML", true, html);
+    if(!allNotes.length){
+      let note=setNotesContent();
+      editorDispatch(addNote(note));
+    }
+
   }, []);
 
   const saveTextAreaHtml = (event) => {
@@ -68,9 +76,10 @@ export const Editor = () => {
           onExecCmd: onExecCmd,
           fontControl: fontControl,
           handleContentEditable: handleContentEditable,
-          textAreaRef: textAreaRef,
+          contentEditableRef: contentEditableRef,
           saveTextAreaHtml: saveTextAreaHtml,
           allNotes:allNotes
+        
         }}
       >
         <EditorComponent />

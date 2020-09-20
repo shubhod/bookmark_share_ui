@@ -10,12 +10,12 @@ const NotesIndex = (props) => {
     <>
       <div>
         <Notes
+          headerStyle={{fontSize:"20px"}}
           notes={[
             {
               header: "All Notes",
               content: " ",
-              footer: "footer",
-              headerStyle:{fontSize:"20px"}
+              footer: "footer"
             }
           ]}
         />
