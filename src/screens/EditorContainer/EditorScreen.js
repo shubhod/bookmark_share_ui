@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect} from "react";
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useState, useRef, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import EditorComponent from "../../components/Editor/EditorComponent";
 import { addNote } from "../MainNav/mainNavRedux/MainNavActions";
 import { setNotesContent } from "../../helper/setNotesContent";
@@ -7,26 +7,35 @@ import { setNotesContent } from "../../helper/setNotesContent";
 export const EditorContext = React.createContext(null);
 
 export const Editor = () => {
-  const editorDispatch=useDispatch(); 
-  const allNotes=useSelector(state => state.mainNavReducer.allNotes);
+  const editorDispatch = useDispatch();
+  const [allNotesLocalState, setallNotesLocalState] = useState(null);
+  const allNotes = useSelector((state) => {
+    return state.mainNavReducer.allNotes;
+  });
   const [fontControl, setFontControl] = useState({
     fontName: "Font",
     fontSize: "fontSize",
   });
-
   const [html, setHtml] = useState(`<div><br/></div>`);
+  const currentNoteRef = useRef();
 
-  const contentEditableRef=useRef(null);
-  const notesTitle=useRef(null);
-  
   useEffect(() => {
     document.execCommand("insertHTML", true, html);
-    if(!allNotes.length){
-      let note=setNotesContent();
+    if (!allNotes.length) {
+      let note = setNotesContent();
       editorDispatch(addNote(note));
     }
-
   }, []);
+  let prev = useRef(null);
+  useEffect(() => {
+    if (allNotes.length) {
+      if (prev.current) {
+        console.log(prev.current.align);
+      }
+      currentNoteRef.current.style.border = "2px solid red";
+      prev.current = { ...currentNoteRef };
+    }
+  }, [allNotes.length]);
 
   const saveTextAreaHtml = (event) => {
     setHtml(event.target.innerHTML);
@@ -76,10 +85,9 @@ export const Editor = () => {
           onExecCmd: onExecCmd,
           fontControl: fontControl,
           handleContentEditable: handleContentEditable,
-          contentEditableRef: contentEditableRef,
           saveTextAreaHtml: saveTextAreaHtml,
-          allNotes:allNotes
-        
+          allNotes: allNotes,
+          currentNoteRef: currentNoteRef,
         }}
       >
         <EditorComponent />

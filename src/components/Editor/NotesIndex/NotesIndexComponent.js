@@ -2,10 +2,8 @@ import React, { useContext } from "react";
 import Notes from "./Notes/NotesComponent";
 import "./NotesIndexStyles.scss";
 import { EditorContext } from "../../../screens/EditorContainer/EditorScreen";
-
 const NotesIndex = (props) => {
   const { allNotes } = useContext(EditorContext);
-  console.log(allNotes);
   return (
     <>
       <div>
