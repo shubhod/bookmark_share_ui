@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import EditorComponent from "../../components/Editor/EditorComponent";
 import { addNote } from "../MainNav/mainNavRedux/MainNavActions";
 import { setNotesContent } from "../../helper/setNotesContent";
+import { remvBorderFromNotes, addBorderToNotes } from "./NotesIndexMethods";
 
 export const EditorContext = React.createContext(null);
 
 export const Editor = () => {
   const editorDispatch = useDispatch();
-  const [allNotesLocalState, setallNotesLocalState] = useState(null);
   const allNotes = useSelector((state) => {
     return state.mainNavReducer.allNotes;
   });
@@ -17,7 +17,12 @@ export const Editor = () => {
     fontSize: "fontSize",
   });
   const [html, setHtml] = useState(`<div><br/></div>`);
+
+  /**
+   * refs for current note selection
+   */
   const currentNoteRef = useRef();
+  let previousNotesRef = useRef(null);
 
   useEffect(() => {
     document.execCommand("insertHTML", true, html);
@@ -26,16 +31,33 @@ export const Editor = () => {
       editorDispatch(addNote(note));
     }
   }, []);
-  let prev = useRef(null);
+
   useEffect(() => {
+    console.log(previousNotesRef);
     if (allNotes.length) {
-      if (prev.current) {
-        console.log(prev.current.align);
+      if (previousNotesRef.current) {
+        remvBorderFromNotes(previousNotesRef);
       }
-      currentNoteRef.current.style.border = "2px solid red";
-      prev.current = { ...currentNoteRef };
+      addBorderToNotes(currentNoteRef);
+      previousNotesRef.current = { ...currentNoteRef }.current;
     }
-  }, [allNotes.length]);
+  },[currentNoteRef.current]);
+
+  const onClickNotes = (event, title) => {
+    const currentElement = event.target;
+    const currentElementParent = event.target.parentNode;
+    if (title != "All Notes") {
+      currentNoteRef.current.style.border = "None";
+      previousNotesRef.current.style.border = "None";
+      if (currentElement.className == "notes") {
+        currentElement.style.border = "2px solid red";
+        previousNotesRef.current = currentElement;
+      } else {
+        currentElementParent.style.border = "2px solid red";
+        previousNotesRef.current = currentElementParent;
+      }
+    }
+  };
 
   const saveTextAreaHtml = (event) => {
     setHtml(event.target.innerHTML);
@@ -88,6 +110,7 @@ export const Editor = () => {
           saveTextAreaHtml: saveTextAreaHtml,
           allNotes: allNotes,
           currentNoteRef: currentNoteRef,
+          onClickNotes: onClickNotes,
         }}
       >
         <EditorComponent />

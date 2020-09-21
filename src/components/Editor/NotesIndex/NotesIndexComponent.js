@@ -3,7 +3,7 @@ import Notes from "./Notes/NotesComponent";
 import "./NotesIndexStyles.scss";
 import { EditorContext } from "../../../screens/EditorContainer/EditorScreen";
 const NotesIndex = (props) => {
-  const { allNotes } = useContext(EditorContext);
+  const { allNotes, } = useContext(EditorContext);
   return (
     <>
       <div>
@@ -18,7 +18,7 @@ const NotesIndex = (props) => {
           ]}
         />
         <div className="allNotes">
-          <Notes notes={[...allNotes]} />
+          <Notes  notes={[...allNotes]} />
         </div>
       </div>
     </>
