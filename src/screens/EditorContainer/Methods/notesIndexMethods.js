@@ -4,26 +4,22 @@ export const addBorderToNotes = (element) => {
 export const remvBorderFromNotes = (element) => {
   element.current.style.border = "None";
 };
-export const ToggleFocusOfNotes = (
+export const toggleFocusOfNotes = (
   event,
   title,
   previousNotesRef,
   currentNoteRef
 ) => {
-const currentElement = event.target;
+  const currentElement = event.target;
   const currentElementParent = event.target.parentNode;
   if (title != "All Notes") {
     remvBorderFromNotes(previousNotesRef);
     remvBorderFromNotes(currentNoteRef);
-    // currentNoteRef.current.style.border = "None";
-    // previousNotesRef.current.style.border = "None";
     if (currentElement.className == "notes") {
-      addBorderToNotes(currentElement);
-      //   currentElement.style.border = "2px solid red";
+      addBorderToNotes({ current: currentElement });
       previousNotesRef.current = currentElement;
     } else {
-      addBorderToNotes(currentElementParent);
-      //   currentElementParent.style.border = "2px solid red";
+      addBorderToNotes({ current: currentElementParent });
       previousNotesRef.current = currentElementParent;
     }
   }

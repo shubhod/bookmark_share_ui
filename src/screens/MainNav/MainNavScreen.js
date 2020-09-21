@@ -3,14 +3,13 @@ import SideBar from "../../components/SideBar/SideBarComponent";
 import { SIDEBAR_MENU_ITEMS, SIDE_BAR_MENU_ICONS, MONTHS } from "./constants";
 import { MainNavContext } from "./MainNavContext";
 import { useDispatch } from "react-redux";
-import { addNote } from "./mainNavRedux/MainNavActions";
-import { ADD_NOTES } from "./mainNavRedux/MainNavActionTypes";
+import { addNoteAction } from "./mainNavRedux/MainNavActions";
 import { setNotesContent } from "../../helper/setNotesContent";
 const MainNav = () => {
-  const dispatch=useDispatch();
+  const mainNavDispatch=useDispatch();
   const onClickAddNotes=(event)=>{
-      let note=setNotesContent();
-      dispatch(addNote(note)); 
+      let note=setNotesContent({header:"untiled"});
+      mainNavDispatch(addNoteAction(note)); 
   };
   const onClickMenuItem=(event)=>{
     console.log("menuItemClicked");

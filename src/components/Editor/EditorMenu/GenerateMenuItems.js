@@ -1,15 +1,17 @@
-import React, {useRef} from "react";
+import React, {useRef, useContext} from "react";
 import { EDITOR_MENU_ICONS } from "./constants";
 import "antd/dist/antd.css";
 import { Menu } from "antd";
 import "./ScssMenuItems.scss";
+import { EditorContext } from "../../../screens/EditorContainer/EditorScreen";
 
 var countImg = 0;
+
 export const GenerateMenuItems = (
   controlNameList,
-  menuType,
-  contextEditorCmd
+  menuType
 ) => {
+  const {onClickEditorMenuItem}=useContext(EditorContext);
   const inputRef = useRef(null);
   const fontFamily = (controlName, index) => {
     return (
@@ -17,7 +19,7 @@ export const GenerateMenuItems = (
         key={controlName + index}
         onMouseDown={(event) => {
           event.preventDefault();
-          contextEditorCmd("fontName", controlName);
+          onClickEditorMenuItem("fontName", controlName);
         }}
       >
         {controlName}
@@ -31,7 +33,7 @@ export const GenerateMenuItems = (
         key={"fontSize" + index}
         onMouseDown={(e) => {
           e.preventDefault();
-          contextEditorCmd("fontSize", index);
+          onClickEditorMenuItem("fontSize", index);
         }}
       >
         {index}
@@ -59,7 +61,7 @@ export const GenerateMenuItems = (
   }
 
   const genericMenuItems = (controlName, index) => {
-    let contextEditorCmdObj = { contextEditorCmd: contextEditorCmd };
+    let contextEditorCmdObj = { contextEditorCmd: onClickEditorMenuItem };
     if (controlName == "image") {
       return (
         <Menu.Item
@@ -82,7 +84,7 @@ export const GenerateMenuItems = (
           key={controlName + index}
           icon={EDITOR_MENU_ICONS[controlName]}
           onMouseDown={(event) => {
-            contextEditorCmd(controlName, null);
+            onClickEditorMenuItem(controlName, null);
           }}
         />
       );

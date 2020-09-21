@@ -14,7 +14,7 @@ const Notes = (props) => {
         ref={currentNoteRef}
         className="notes"
         style={props.style}
-        onClick={(event)=>{onClickNotes(event,note.header);}}
+        onClick={(event)=>{onClickNotes(event,note.header,index);}}
       >
         <div className="notes__header" style={props.headerStyle}>
           {note.header}

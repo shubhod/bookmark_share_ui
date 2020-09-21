@@ -7,17 +7,13 @@ import { EDITOR_MENU_ICONS, FONT_FAMILY } from "./constants";
 const { SubMenu } = Menu;
 
 const EditorMenuComponent = (props) => {
-  const { fontControl, onExecCmd } = useContext(EditorContext);
+  const { fontControl } = useContext(EditorContext);
 
-  let MenuItems = GenerateMenuItems(
-    Object.keys(EDITOR_MENU_ICONS),
-    "menu",
-    onExecCmd
-  );
+  let MenuItems = GenerateMenuItems(Object.keys(EDITOR_MENU_ICONS), "menu");
 
-  let subMenuFontName = GenerateMenuItems(FONT_FAMILY, "fontName", onExecCmd);
+  let subMenuFontName = GenerateMenuItems(FONT_FAMILY, "fontName");
 
-  let subMenuFontSize = GenerateMenuItems([...Array(7)], "fontSize", onExecCmd);
+  let subMenuFontSize = GenerateMenuItems([...Array(7)], "fontSize");
   return (
     <Menu
       selectable={false}

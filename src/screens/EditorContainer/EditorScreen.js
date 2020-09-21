@@ -1,116 +1,103 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import EditorComponent from "../../components/Editor/EditorComponent";
-import { addNote } from "../MainNav/mainNavRedux/MainNavActions";
+import {
+  addNoteAction,
+  editNotesAction,
+} from "../MainNav/mainNavRedux/MainNavActions";
 import { setNotesContent } from "../../helper/setNotesContent";
-import { remvBorderFromNotes, addBorderToNotes } from "./NotesIndexMethods";
+import {
+  remvBorderFromNotes,
+  addBorderToNotes,
+  toggleFocusOfNotes,
+} from "./Methods/notesIndexMethods";
+import {
+  changeFontOptionEditorMenu,
+  execContentEditableCmd,
+} from "./Methods/editorAreaMethods";
 
 export const EditorContext = React.createContext(null);
 
 export const Editor = () => {
+  // dispatcher instance
   const editorDispatch = useDispatch();
+
+  //allNotes redux global state
   const allNotes = useSelector((state) => {
     return state.mainNavReducer.allNotes;
   });
+
+  //local states of editor screen
   const [fontControl, setFontControl] = useState({
     fontName: "Font",
     fontSize: "fontSize",
   });
   const [html, setHtml] = useState(`<div><br/></div>`);
+  const [allNotesCurrentIndex, setAllNotesCurrentIndex] = useState(
+    allNotes.length
+  );
 
-  /**
-   * refs for current note selection
-   */
+  // refs
   const currentNoteRef = useRef();
-  let previousNotesRef = useRef(null);
+  let previousNotesRef = useRef();
+  const contentEditable = useRef();
 
+  //side effects
   useEffect(() => {
     document.execCommand("insertHTML", true, html);
-    if (!allNotes.length) {
-      let note = setNotesContent();
-      editorDispatch(addNote(note));
-    }
   }, []);
 
   useEffect(() => {
-    console.log(previousNotesRef);
     if (allNotes.length) {
       if (previousNotesRef.current) {
         remvBorderFromNotes(previousNotesRef);
       }
       addBorderToNotes(currentNoteRef);
       previousNotesRef.current = { ...currentNoteRef }.current;
+      setAllNotesCurrentIndex(allNotes.length - 1);
+    } 
+    else {
+      let note = setNotesContent({ header: "untitled" });
+      editorDispatch(addNoteAction(note));
     }
-  },[currentNoteRef.current]);
+  }, [currentNoteRef.current]);
 
-  const onClickNotes = (event, title) => {
-    const currentElement = event.target;
-    const currentElementParent = event.target.parentNode;
-    if (title != "All Notes") {
-      currentNoteRef.current.style.border = "None";
-      previousNotesRef.current.style.border = "None";
-      if (currentElement.className == "notes") {
-        currentElement.style.border = "2px solid red";
-        previousNotesRef.current = currentElement;
-      } else {
-        currentElementParent.style.border = "2px solid red";
-        previousNotesRef.current = currentElementParent;
-      }
-    }
+  //event handlers and logic
+  const onClickNotes = (event, title, index) => {
+    toggleFocusOfNotes(event, title, previousNotesRef, currentNoteRef);
   };
 
-  const saveTextAreaHtml = (event) => {
+  const onInputEditor = (event) => {
     setHtml(event.target.innerHTML);
   };
+  const onInputNotesTitle = (value) => {
+    let notes = setNotesContent({ header: value });
+    console.log(allNotesCurrentIndex);  
 
-  var handleContentEditable = (event) => {
-    var fontArray = event.target.getElementsByTagName("font");
-    let newFontControl = null;
-    if (fontArray.length > 0) {
-      newFontControl = { ...fontControl };
-      newFontControl.fontName = fontArray[fontArray.length - 1].face;
-      setFontControl(newFontControl);
-    } else if (event.target.tagName == "FONT") {
-      newFontControl = { ...fontControl };
-      newFontControl.fontName = event.target.face;
-      setFontControl(newFontControl);
-    } else {
-      newFontControl = { ...fontControl };
-      newFontControl.fontName = "Font";
-    }
+    editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
   };
 
-  var onExecCmd = (cmd, value, attrId) => {
-    var newFontControl = null;
-    if (cmd == "insertHTML") {
-      document.execCommand(cmd, true, value);
-    } else {
-      document.execCommand(cmd, false, value);
-    }
-
-    if (cmd == "fontName") {
-      newFontControl = { ...fontControl };
-      newFontControl.fontName = value;
-      setFontControl(newFontControl);
-    }
-    if (cmd == "fontSize") {
-      newFontControl = { ...fontControl };
-      newFontControl.fontSize = value;
-      setFontControl(newFontControl);
-    }
+  var onClickEditor = (event) => {
+    changeFontOptionEditorMenu(event, fontControl, setFontControl);
   };
 
+  var onClickEditorMenuItem = (cmd, value, attrId) => {
+    execContentEditableCmd(cmd, value, fontControl, setFontControl, attrId);
+  };
+
+  //view
   return (
     <>
       <EditorContext.Provider
         value={{
-          onExecCmd: onExecCmd,
-          fontControl: fontControl,
-          handleContentEditable: handleContentEditable,
-          saveTextAreaHtml: saveTextAreaHtml,
-          allNotes: allNotes,
-          currentNoteRef: currentNoteRef,
-          onClickNotes: onClickNotes,
+          onClickEditorMenuItem,
+          fontControl,
+          onInputEditor,
+          onInputNotesTitle,
+          onClickEditor,
+          allNotes,
+          currentNoteRef,
+          onClickNotes,
         }}
       >
         <EditorComponent />
