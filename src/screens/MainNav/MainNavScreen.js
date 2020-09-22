@@ -8,7 +8,7 @@ import { setNotesContent } from "../../helper/setNotesContent";
 const MainNav = () => {
   const mainNavDispatch=useDispatch();
   const onClickAddNotes=(event)=>{
-      let note=setNotesContent({header:"untiled"});
+      let note=setNotesContent();
       mainNavDispatch(addNoteAction(note)); 
   };
   const onClickMenuItem=(event)=>{

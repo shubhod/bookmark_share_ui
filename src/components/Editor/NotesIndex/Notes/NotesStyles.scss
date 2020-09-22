@@ -28,6 +28,8 @@ $notes_bgColor:	#F0F0F0	;
   padding:20px 30px 20px 15px ;
   border-bottom: 1px solid 	#D3D3D3;
   background-color:$notes_bgColor;
+  transition-timing-function: ease-in-out;
+  transition: border 3s,background 3s;
   font-family:$Raleway;
 
   #{&}__header {  

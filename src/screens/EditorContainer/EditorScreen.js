@@ -24,7 +24,7 @@ export const Editor = () => {
 
   //allNotes redux global state
   const allNotes = useSelector((state) => {
-    return state.mainNavReducer.allNotes;
+    return state.mainNavReducer;
   });
 
   //local states of editor screen
@@ -33,48 +33,36 @@ export const Editor = () => {
     fontSize: "fontSize",
   });
   const [html, setHtml] = useState(`<div><br/></div>`);
-  const [allNotesCurrentIndex, setAllNotesCurrentIndex] = useState(
-    allNotes.length
-  );
+  const [allNotesCurrentIndex, setAllNotesCurrentIndex] = useState(0);
 
   // refs
   const currentNoteRef = useRef();
   let previousNotesRef = useRef();
-  const contentEditable = useRef();
+  const contentEditableRef = useRef();
 
   //side effects
   useEffect(() => {
+    contentEditableRef.current.focus();
     document.execCommand("insertHTML", true, html);
   }, []);
 
   useEffect(() => {
-    if (allNotes.length) {
-      if (previousNotesRef.current) {
-        remvBorderFromNotes(previousNotesRef);
-      }
-      addBorderToNotes(currentNoteRef);
-      previousNotesRef.current = { ...currentNoteRef }.current;
-      setAllNotesCurrentIndex(allNotes.length - 1);
-    } 
-    else {
-      let note = setNotesContent({ header: "untitled" });
-      editorDispatch(addNoteAction(note));
+    console.log("previousNotesRef", previousNotesRef);
+    console.log("currentNoteRef", currentNoteRef);
+    if (previousNotesRef.current) {
+      remvBorderFromNotes(previousNotesRef);
     }
-  }, [currentNoteRef.current]);
+    addBorderToNotes(currentNoteRef);
+    previousNotesRef.current = { ...currentNoteRef }.current;
+    setAllNotesCurrentIndex(allNotes.length - 1);
+  }, [allNotes.length]);
 
   //event handlers and logic
   const onClickNotes = (event, title, index) => {
     toggleFocusOfNotes(event, title, previousNotesRef, currentNoteRef);
-  };
-
-  const onInputEditor = (event) => {
-    setHtml(event.target.innerHTML);
-  };
-  const onInputNotesTitle = (value) => {
-    let notes = setNotesContent({ header: value });
-    console.log(allNotesCurrentIndex);  
-
-    editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
+    setAllNotesCurrentIndex(index);
+    // contentEditableRef.current.focus();
+    // document.execCommand("insertHTML", true, allNotes[index].content);
   };
 
   var onClickEditor = (event) => {
@@ -83,6 +71,19 @@ export const Editor = () => {
 
   var onClickEditorMenuItem = (cmd, value, attrId) => {
     execContentEditableCmd(cmd, value, fontControl, setFontControl, attrId);
+  };
+
+  const onInputNotesTitle = (value) => {
+    if (!value.length) {
+      value = "untitled";
+    }
+    let notes = {...allNotes[allNotesCurrentIndex],header: value };
+    editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
+  };
+  const onInputEditor = (event) => {
+    let notes = {...allNotes[allNotesCurrentIndex],content:event.target.value};
+    console.log(notes);
+    editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
   };
 
   //view
@@ -98,6 +99,8 @@ export const Editor = () => {
           allNotes,
           currentNoteRef,
           onClickNotes,
+          contentEditableRef,
+          allNotesCurrentIndex,
         }}
       >
         <EditorComponent />

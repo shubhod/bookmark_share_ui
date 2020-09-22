@@ -1,26 +1,27 @@
 import { ADD_NOTES, EDIT_NOTES } from "./MainNavActionTypes";
-const initialState={
-  allNotes:[]
-};
+import { setNotesContent } from "../../../helper/setNotesContent";
+// const initialState={
+//   allNotes:[]
+// };
+const note=setNotesContent();
+const allNotes=[note];
 const addNotes=(state,action)=>{
-  return {...state,allNotes:state.allNotes.concat(action.note)};
+  return [...state,action.note];
 }
 const editNotes=(state,action)=>{
-  const  newState={...state};
-  let  {index,note}=action.payload;
-  index=(newState["allNotes"].length-1)-index;
-  newState["allNotes"][index]=note;
+  let {index,note}=action.payload;
+  let newState=Object.assign([...state],{[index]:note});
   return newState;
-}
+  }
 
-const mainNavReducer=(state=initialState,action)=>{
+const mainNavReducer=(state=allNotes,action)=>{
   switch (action.type) {
     case ADD_NOTES:
          return addNotes(state,action);
     case EDIT_NOTES:
          return editNotes(state,action);
     default:
-      return initialState
+      return allNotes
       }
 }
 export default mainNavReducer;
