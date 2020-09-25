@@ -3,7 +3,7 @@ import { EDITOR_MENU_ICONS } from "./constants";
 import "antd/dist/antd.css";
 import { Menu } from "antd";
 import "./ScssMenuItems.scss";
-import { EditorContext } from "../../../screens/EditorContainer/EditorScreen";
+import { useEditorMenuContext } from "../../../screens/EditorContainer/Context/EditorContext";
 
 var countImg = 0;
 
@@ -11,7 +11,7 @@ export const GenerateMenuItems = (
   controlNameList,
   menuType
 ) => {
-  const {onClickEditorMenuItem}=useContext(EditorContext);
+  const {onClickEditorMenuItem}=useEditorMenuContext();
   const inputRef = useRef(null);
   const fontFamily = (controlName, index) => {
     return (

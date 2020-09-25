@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Layout, Space, Input } from "antd";
 import "./ScssTextEditorInputArea.scss";
-import { EditorContext } from "../../../screens/EditorContainer/EditorScreen";
 import { useSelector } from "react-redux";
+import { useEditorInputAreaContext } from "../../../screens/EditorContainer/Context/EditorContext";
 export default (props) => {
   let {
     onInputEditor,
@@ -10,7 +10,8 @@ export default (props) => {
     onInputNotesTitle,
     contentEditableRef,
     allNotesCurrentIndex,
-  } = useContext(EditorContext);
+    state
+  } =useEditorInputAreaContext();
 
   const allNotes = useSelector((state) => {
     return state.mainNavReducer;
@@ -20,7 +21,6 @@ export default (props) => {
     <div className="editor-input-area">
       <div className="editor-input-area__content">
         <Input
-          spellcheck="false"
           bordered={false}
           value={allNotes[allNotesCurrentIndex].header=="untitled" ?null:allNotes[allNotesCurrentIndex].header}
           placeholder="Title"
@@ -32,7 +32,6 @@ export default (props) => {
         />
         <div
           contentEditable
-          spellcheck="false"
           className="card"
           id="textArea"
           ref={contentEditableRef}

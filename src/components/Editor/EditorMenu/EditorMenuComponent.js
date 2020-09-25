@@ -1,13 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { CaretDownOutlined } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
-import { EditorContext } from "../../../screens/EditorContainer/EditorScreen";
 import { GenerateMenuItems } from "./GenerateMenuItems";
 import { EDITOR_MENU_ICONS, FONT_FAMILY } from "./constants";
+import { useEditorMenuContext } from "../../../screens/EditorContainer/Context/EditorContext";
 const { SubMenu } = Menu;
 
 const EditorMenuComponent = (props) => {
-  const { fontControl } = useContext(EditorContext);
+  const { fontControl } = useEditorMenuContext();
+
+  useEffect(() => {
+    console.log("xxxxxxxxxxxxxxxxxxxx");
+  });
 
   let MenuItems = GenerateMenuItems(Object.keys(EDITOR_MENU_ICONS), "menu");
 
@@ -43,4 +47,4 @@ const EditorMenuComponent = (props) => {
   );
 };
 
-export default EditorMenuComponent;
+export default React.memo(EditorMenuComponent);

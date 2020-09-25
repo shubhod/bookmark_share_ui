@@ -5,7 +5,6 @@ import {
   addNoteAction,
   editNotesAction,
 } from "../MainNav/mainNavRedux/MainNavActions";
-import { setNotesContent } from "../../helper/setNotesContent";
 import {
   remvBorderFromNotes,
   addBorderToNotes,
@@ -15,10 +14,12 @@ import {
   changeFontOptionEditorMenu,
   execContentEditableCmd,
 } from "./Methods/editorAreaMethods";
+import EditorContext from "./Context/EditorContext";
 
-export const EditorContext = React.createContext(null);
+// export const EditorContext = React.createContext();
+// export const EditoMenuContext=React.createContext();
 
-export const Editor = () => {
+const Editor = () => {
   // dispatcher instance
   const editorDispatch = useDispatch();
 
@@ -57,10 +58,13 @@ export const Editor = () => {
     setAllNotesCurrentIndex(allNotes.length - 1);
   }, [allNotes.length]);
 
+
+  const [state, setstate] = useState(0);
   //event handlers and logic
   const onClickNotes = (event, title, index) => {
     toggleFocusOfNotes(event, title, previousNotesRef, currentNoteRef);
-    setAllNotesCurrentIndex(index);
+    setstate(4);
+    // setAllNotesCurrentIndex(index);
     // contentEditableRef.current.focus();
     // document.execCommand("insertHTML", true, allNotes[index].content);
   };
@@ -77,34 +81,41 @@ export const Editor = () => {
     if (!value.length) {
       value = "untitled";
     }
-    let notes = {...allNotes[allNotesCurrentIndex],header: value };
+    let notes = { ...allNotes[allNotesCurrentIndex], header: value };
     editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
   };
   const onInputEditor = (event) => {
-    let notes = {...allNotes[allNotesCurrentIndex],content:event.target.value};
+    let notes = {
+      ...allNotes[allNotesCurrentIndex],
+      content: event.target.value,
+    };
     console.log(notes);
     editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
+  };
+
+  let NotesContextValues = { currentNoteRef, onClickNotes };
+  let MenuContextValues = { fontControl, onClickEditorMenuItem };
+  let InputAreaContextValues = {
+    onInputEditor,
+    onClickEditor,
+    onInputNotesTitle,
+    contentEditableRef,
+    allNotesCurrentIndex,
+    state
+  
   };
 
   //view
   return (
     <>
-      <EditorContext.Provider
-        value={{
-          onClickEditorMenuItem,
-          fontControl,
-          onInputEditor,
-          onInputNotesTitle,
-          onClickEditor,
-          allNotes,
-          currentNoteRef,
-          onClickNotes,
-          contentEditableRef,
-          allNotesCurrentIndex,
-        }}
+      <EditorContext
+        NotesContextValues={NotesContextValues}
+        MenuContextValues={MenuContextValues}
+        InputAreaContextValues={InputAreaContextValues}
       >
         <EditorComponent />
-      </EditorContext.Provider>
+      </EditorContext>
     </>
   );
 };
+export default Editor;

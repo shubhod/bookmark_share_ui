@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addNoteAction } from "./mainNavRedux/MainNavActions";
 import { setNotesContent } from "../../helper/setNotesContent";
 const MainNav = () => {
+  console.log("main nav");
   const mainNavDispatch=useDispatch();
   const onClickAddNotes=(event)=>{
       let note=setNotesContent();

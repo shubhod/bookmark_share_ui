@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import "./NotesStyles.scss";
-import { EditorContext } from "../../../../screens/EditorContainer/EditorScreen";
+import { useEditorNotesContext } from "../../../../screens/EditorContainer/Context/EditorContext";
 const Notes = (props) => {
   const notes = props.notes;
-  const { currentNoteRef,onClickNotes} = useContext(EditorContext);
+  const { currentNoteRef,onClickNotes} = useEditorNotesContext();
+  console.log("notes")
   const newNotes = [];
   let newArrayIndex=0;
   for (let index=notes.length - 1;index >=0; index--) {
