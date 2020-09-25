@@ -33,7 +33,7 @@ const Editor = () => {
     fontName: "Font",
     fontSize: "fontSize",
   });
-  const [html, setHtml] = useState(`<div><br/></div>`);
+  const [currentNotesHtml, setCurrentNotesHtml] = useState(`<div><br/></div>`);
   const [allNotesCurrentIndex, setAllNotesCurrentIndex] = useState(0);
 
   // refs
@@ -44,18 +44,18 @@ const Editor = () => {
   //side effects
   useEffect(() => {
     contentEditableRef.current.focus();
-    document.execCommand("insertHTML", true, html);
+    document.execCommand("insertHTML", true, currentNotesHtml);
   }, []);
 
   useEffect(() => {
-    console.log("previousNotesRef", previousNotesRef);
-    console.log("currentNoteRef", currentNoteRef);
+
     if (previousNotesRef.current) {
       remvBorderFromNotes(previousNotesRef);
     }
     addBorderToNotes(currentNoteRef);
     previousNotesRef.current = { ...currentNoteRef }.current;
     setAllNotesCurrentIndex(allNotes.length - 1);
+    contentEditableRef.current.innerHTML=allNotes[allNotes.length - 1].content;
   }, [allNotes.length]);
 
 
@@ -63,10 +63,9 @@ const Editor = () => {
   //event handlers and logic
   const onClickNotes = (event, title, index) => {
     toggleFocusOfNotes(event, title, previousNotesRef, currentNoteRef);
-    setstate(4);
-    // setAllNotesCurrentIndex(index);
-    // contentEditableRef.current.focus();
-    // document.execCommand("insertHTML", true, allNotes[index].content);
+    setAllNotesCurrentIndex(index);
+    contentEditableRef.current.innerHTML=allNotes[index].content;
+
   };
 
   var onClickEditor = (event) => {
@@ -87,10 +86,10 @@ const Editor = () => {
   const onInputEditor = (event) => {
     let notes = {
       ...allNotes[allNotesCurrentIndex],
-      content: event.target.value,
+      content:event.target.innerHTML
     };
-    console.log(notes);
     editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
+
   };
 
   let NotesContextValues = { currentNoteRef, onClickNotes };
@@ -101,8 +100,7 @@ const Editor = () => {
     onInputNotesTitle,
     contentEditableRef,
     allNotesCurrentIndex,
-    state
-  
+      
   };
 
   //view

@@ -9,10 +9,6 @@ const { SubMenu } = Menu;
 const EditorMenuComponent = (props) => {
   const { fontControl } = useEditorMenuContext();
 
-  useEffect(() => {
-    console.log("xxxxxxxxxxxxxxxxxxxx");
-  });
-
   let MenuItems = GenerateMenuItems(Object.keys(EDITOR_MENU_ICONS), "menu");
 
   let subMenuFontName = GenerateMenuItems(FONT_FAMILY, "fontName");

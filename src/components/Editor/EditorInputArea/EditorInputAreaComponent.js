@@ -3,6 +3,7 @@ import { Layout, Space, Input } from "antd";
 import "./ScssTextEditorInputArea.scss";
 import { useSelector } from "react-redux";
 import { useEditorInputAreaContext } from "../../../screens/EditorContainer/Context/EditorContext";
+import ReactHtmlParser from "react-html-parser";
 export default (props) => {
   let {
     onInputEditor,
@@ -10,19 +11,25 @@ export default (props) => {
     onInputNotesTitle,
     contentEditableRef,
     allNotesCurrentIndex,
-    state
-  } =useEditorInputAreaContext();
+    currentNotesHtml
+  } = useEditorInputAreaContext();
 
   const allNotes = useSelector((state) => {
     return state.mainNavReducer;
   });
-
+  useEffect(()=>{
+    console.log(currentNotesHtml);
+  })
   return (
     <div className="editor-input-area">
       <div className="editor-input-area__content">
         <Input
           bordered={false}
-          value={allNotes[allNotesCurrentIndex].header=="untitled" ?null:allNotes[allNotesCurrentIndex].header}
+          value={
+            allNotes[allNotesCurrentIndex].header == "untitled"
+              ? null
+              : allNotes[allNotesCurrentIndex].header
+          }
           placeholder="Title"
           className="editor-input-area__content__input"
           onInput={(event) => {

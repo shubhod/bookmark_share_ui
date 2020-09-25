@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
 import { useContextFactory } from "../../../helper/useContextFactory";
-const EditorNotesContext = createContext();
-const EditorMenuContext = createContext();
+const EditorNotesContext = createContext(null);
+const EditorMenuContext = createContext(null,(prev,next)=>{return 0});
 const EditorInputAreaContext = createContext();
 
 export const useEditorNotesContext = useContextFactory(
@@ -19,7 +19,6 @@ export const useEditorInputAreaContext = useContextFactory(
 
 const EditorContext = (props) => {
   let { NotesContextValues, MenuContextValues, InputAreaContextValues } = props;
-  console.log(props);
   return (
     <EditorMenuContext.Provider value={MenuContextValues}>
     <EditorNotesContext.Provider value={NotesContextValues}>

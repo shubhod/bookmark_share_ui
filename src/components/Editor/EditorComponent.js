@@ -15,4 +15,4 @@ const EditorComponent = (props) => {
   );
 };
 
-export default React.memo(EditorComponent);
+export default React.memo(EditorComponent,()=>{ return false});
