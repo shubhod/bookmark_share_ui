@@ -1,0 +1,120 @@
+@import "../../variables.scss";
+$background-gradient: linear-gradient(
+  to right top,
+  #053726,
+  #003231,
+  #002b39,
+  #00233c,
+  #051937
+);
+.login {
+  height: auto;
+  display: flex;
+  background-image: url("/images/loginScreen/Screenshot from 2020-09-27 17-09-16.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  flex-wrap: row wrap;
+  flex-basis: 100%;
+  
+}
+.login__input-area {
+  flex-basis: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  background-color: #f6fedb;
+  border-radius: 5px;
+  box-shadow: -7px 10px 24px -1px rgba(0, 0, 0, 0.9);
+  background: rgba(219, 22, 47, 0.5);
+  order: 2;
+  
+  #{&}__header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10%;
+    width: 70%;
+
+  }
+  #{&}__header__tagline {
+    margin-top: -4vw;
+    color: white;
+  }
+  #{&}__header__tagline > p:nth-child(1) {
+    font-size: 2.5vw;
+    font-family: $Catamaran;
+  }
+  #{&}__header__tagline > p:nth-child(2) {
+    font-size: 1.5vw;
+    font-family: $Raleway;
+    margin-top: -3vw;
+  }
+  #{&}__logo {
+    display: block;
+    box-sizing: border-box;
+    width: 12vw;
+  }
+  #{&}__content{
+      width: 70%;
+
+  }
+
+}
+
+.login_tag-line {
+  order: 1;
+  height: 100%;
+  color: whitesmoke;
+  font-size: 5vw;
+  font-family: $Catamaran;
+  flex-basis: 55%;
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(5, 25, 55, 0.7);
+  padding-top: 10%;
+  align-items: center;
+}
+.ant-input,.ant-input-affix-wrapper{
+  border: none;
+  border-bottom:1px solid white;
+  outline: 0 $imp;
+  background:rgba(219, 22, 47, 0.01);
+
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  // border-bottom: 2px solid $gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color:white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;  
+
+
+
+
+}
+
+.ant-btn{
+  border: none;
+  background: #B74639;//rgba(219, 22, 47,0.5);
+  box-shadow: -7px 10px 24px -1px rgba(0, 0, 0, 0.9);
+
+
+  &:hover{
+    border: none;
+    background:none;
+  }
+
+  
+}
+
+
+

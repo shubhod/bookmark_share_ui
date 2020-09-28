@@ -1,0 +1,19 @@
+@import "../../variables.scss";
+
+
+.form-footer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: $Raleway;
+
+  #{&}__explanation{
+      font-size: 19px;
+  }
+  #{&}__link{
+    font-size: 22px;
+  }
+}
+.input{
+  width: 100%;
+}

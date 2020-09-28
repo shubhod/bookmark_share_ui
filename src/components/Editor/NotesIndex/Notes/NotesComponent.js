@@ -3,15 +3,12 @@ import "./NotesStyles.scss";
 import { useEditorNotesContext } from "../../../../screens/EditorContainer/Context/EditorContext";
 const Notes = (props) => {
   const notes = props.notes;
-  const { currentNoteRef,onClickNotes} = useEditorNotesContext();
+  console.log("notes");
+  const {currentNoteRef,onClickNotes} =useEditorNotesContext();
   const newNotes = [];
   let newArrayIndex=0;
   for (let index=notes.length - 1;index >=0; index--) {
-    let note = notes[index];
-    let content=(note.content!=null)?note.content:note.content;
-    // var doc = parser.parseFromString(note.content, 'text/html');
-    // console.log(doc.body.textContent);
-    
+    let note = notes[index];    
     newNotes[newArrayIndex] = (
       <div
         key={note.header + index}
@@ -30,10 +27,20 @@ const Notes = (props) => {
         </div>
       </div>
     );
+    
     newArrayIndex++;
   }
   return newNotes;
 };
-export default Notes;
+export default React.memo(Notes,(prev,next)=>{
+  if(prev.notes.length){
+    console.log(prev.notes.length,next.notes.length);
+  }
+  // if(prev){
+    
+  // }
+  return prev.notes.length==next.notes.length;
+  // return true;
+});
 
 

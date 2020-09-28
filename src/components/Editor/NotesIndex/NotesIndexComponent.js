@@ -8,24 +8,22 @@ const NotesIndex = (props) => {
     return state.mainNavReducer;
   });
   return (
-    <>
-      <div>
-        <Notes
-          headerStyle={{fontSize:"20px"}}
-          notes={[
-            {
-              header: "All Notes",
-              content: " ",
-              footer: "footer"
-            }
-          ]}
-        />
-        <div className="allNotes">
-          <Notes  notes={[...allNotes]} />
-        </div>
-      </div>
-    </>
+    <div className="allNotes">
+      <Notes
+        headerStyle={{ fontSize: "20px" }}
+        notes={[
+          {
+            header: "All Notes",
+            content: " ",
+            footer: "footer",
+          },
+        ]}
+      />
+      <Notes notes={[...allNotes]} />
+    </div>
   );
 };
 
-export default NotesIndex;
+export default React.memo(NotesIndex, () => {
+  return true;
+});

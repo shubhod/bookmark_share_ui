@@ -1,9 +1,13 @@
-.editorWrapper{
+.editor{
+    display: flex;
+    flex-basis: 80%;
+}
+
+.editor__input-area{
     display: flex;
     flex-direction: column;
     height: 100%;
-    flex-basis:70%;
-    width:70%;
+    flex-basis:100%;
     
 
 }

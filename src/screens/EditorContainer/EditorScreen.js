@@ -56,10 +56,11 @@ const Editor = () => {
     previousNotesRef.current = { ...currentNoteRef }.current;
     setAllNotesCurrentIndex(allNotes.length - 1);
     contentEditableRef.current.innerHTML=allNotes[allNotes.length - 1].content;
-  }, [allNotes.length]);
+  },[allNotes.length]);
 
 
   const [state, setstate] = useState(0);
+
   //event handlers and logic
   const onClickNotes = (event, title, index) => {
     toggleFocusOfNotes(event, title, previousNotesRef, currentNoteRef);
@@ -84,15 +85,15 @@ const Editor = () => {
     editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
   };
   const onInputEditor = (event) => {
-    let notes = {
-      ...allNotes[allNotesCurrentIndex],
-      content:event.target.innerHTML
-    };
-    editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
+    // let notes = {
+    //   ...allNotes[allNotesCurrentIndex],
+    //   content:event.target.innerHTML
+    // };
+    // editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
 
   };
 
-  let NotesContextValues = { currentNoteRef, onClickNotes };
+  let NotesContextValues = { currentNoteRef, onClickNotes,allNotesCurrentIndex };
   let MenuContextValues = { fontControl, onClickEditorMenuItem };
   let InputAreaContextValues = {
     onInputEditor,

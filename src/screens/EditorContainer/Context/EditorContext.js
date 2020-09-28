@@ -1,8 +1,14 @@
 import React, { createContext } from "react";
 import { useContextFactory } from "../../../helper/useContextFactory";
-const EditorNotesContext = createContext(null);
-const EditorMenuContext = createContext(null,(prev,next)=>{return 0});
-const EditorInputAreaContext = createContext();
+const EditorNotesContext = createContext(null,(prev,next)=> {
+  return prev.allNotesCurrentIndex==next.allNotesCurrentIndex?0:1
+});
+const EditorMenuContext=createContext(null,(prev,next)=>{
+  return prev.fontControl!==next.fontControl?1:0;
+});
+const EditorInputAreaContext=createContext(null,(prev,next)=>{
+  return 0;
+});
 
 export const useEditorNotesContext = useContextFactory(
   "EditorNotesContext",

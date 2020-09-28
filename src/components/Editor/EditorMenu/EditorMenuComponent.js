@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { CaretDownOutlined } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
+import {  Menu } from "antd";
 import { GenerateMenuItems } from "./GenerateMenuItems";
 import { EDITOR_MENU_ICONS, FONT_FAMILY } from "./constants";
 import { useEditorMenuContext } from "../../../screens/EditorContainer/Context/EditorContext";

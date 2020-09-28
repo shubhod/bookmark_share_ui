@@ -5,13 +5,13 @@ import "./EditorComponent.scss";
 import NotesIndex from "./NotesIndex/NotesIndexComponent";
 const EditorComponent = (props) => {
   return (
-    <>
+    <div className="editor">
       <NotesIndex />
-      <div className="editorWrapper">
+      <div className="editor__input-area">
         <EditorMenuComponent />
         <EditorInputAreaComponent />
       </div>
-    </>
+    </div>
   );
 };
 
