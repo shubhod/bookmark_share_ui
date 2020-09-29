@@ -1,21 +1,6 @@
 @import "../../variables.scss";
 
 
-.form-footer {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  color: white;
-  font-family: $Raleway;
-  padding-top: 2vh;
-
-  #{&}__explanation{
-      font-size: 15px;
-  }
-  #{&}__link{
-    font-size: 18px;
-  }
-}
 
 .btn-login{
   margin-top:1.5em;

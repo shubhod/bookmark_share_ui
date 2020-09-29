@@ -2,20 +2,21 @@ import React from "react";
 
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import FormFooter from "./BasicFormFooterComponent";
+import { useSigInSignUpContext } from "../../screens/SignInSignUp/SignInSignUpContext";
 
 const BasicForm = (props) => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
-
+  const { isSignIn } = useSigInSignUpContext();
+  console.log(isSignIn)
   return (
     <Form
       name="normal_login"
       initialValues={{
         remember: true,
       }}
-      style={{ width: "100%",textAlign:"center" }}
+      style={{ width: "100%", textAlign: "center" }}
       onFinish={onFinish}
     >
       <Form.Item
@@ -33,7 +34,7 @@ const BasicForm = (props) => {
         />
       </Form.Item>
       <Form.Item
-        
+        hidden={isSignIn}
         name="password"
         rules={[
           {
@@ -47,6 +48,7 @@ const BasicForm = (props) => {
           type="password"
           placeholder="Password"
         />
+        
       </Form.Item>
 
       <Form.Item>
@@ -55,7 +57,6 @@ const BasicForm = (props) => {
         </Button>
       </Form.Item>
       {props.children}
-      <FormFooter footerExplanation="Don't have an account?" footerLink="Create account" />
     </Form>
   );
 };

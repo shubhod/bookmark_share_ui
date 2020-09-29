@@ -1,7 +1,7 @@
 import React from "react";
 import BasicForm from "../../BasicForm/BasicFormComponent";
-import "./SignInStyles.scss"
-const SignIn = () => {
+import "./SignUpnStyles.scss";
+const SignUp = () => {
   return (
     <BasicForm>
       <div   className="form-agreement"> By creating an account, you are agreeing to our Terms of Service and Privacy Policy.
@@ -10,4 +10,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
