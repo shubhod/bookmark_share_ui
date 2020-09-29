@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Form, Input, Button} from "antd";
+import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import FormFooter from "./BasicFormFooterComponent";
 
@@ -15,8 +15,7 @@ const BasicForm = (props) => {
       initialValues={{
         remember: true,
       }}
-      style={{width:"100%"}}
-
+      style={{ width: "100%",textAlign:"center" }}
       onFinish={onFinish}
     >
       <Form.Item
@@ -29,12 +28,12 @@ const BasicForm = (props) => {
         ]}
       >
         <Input
-
           prefix={<UserOutlined className="site-form-item-icon" />}
           placeholder="Username"
         />
       </Form.Item>
       <Form.Item
+        
         name="password"
         rules={[
           {
@@ -49,16 +48,14 @@ const BasicForm = (props) => {
           placeholder="Password"
         />
       </Form.Item>
-          
+
       <Form.Item>
-          <Button block htmlType="submit">Log in</Button>
+        <Button block htmlType="submit" className="btn-login">
+          Log in
+        </Button>
       </Form.Item>
-          {props.children}
-          <FormFooter
-          footerExplanation="hello"
-          footerLink="Sign in"
-         /> 
-    
+      {props.children}
+      <FormFooter footerExplanation="Don't have an account?" footerLink="Create account" />
     </Form>
   );
 };

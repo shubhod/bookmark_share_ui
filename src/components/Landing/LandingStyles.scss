@@ -26,12 +26,13 @@ $background-gradient: linear-gradient(
   flex-direction: column;
   align-items: center;
   height: 100%;
+  color:white;
   background-color: #f6fedb;
   border-radius: 5px;
-  box-shadow: -7px 10px 24px -1px rgba(0, 0, 0, 0.9);
-  background: rgba(219, 22, 47, 0.5);
+  box-shadow: -7px 10px 24px -1px rgba(173, 101, 101, 0.5);
+  background: rgba(219, 22, 47, 0.4);
   order: 2;
-  
+
   #{&}__header {
     text-align: center;
     display: flex;
@@ -63,7 +64,6 @@ $background-gradient: linear-gradient(
       width: 70%;
 
   }
-
 }
 
 .login_tag-line {
@@ -71,41 +71,44 @@ $background-gradient: linear-gradient(
   height: 100%;
   color: whitesmoke;
   font-size: 5vw;
-  font-family: $Catamaran;
-  flex-basis: 55%;
+  font-family: $Raleway;
+  font-weight: 500;
+  flex-basis: 65%;
   display: flex;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: rgba(5, 25, 55, 0.7);
   padding-top: 10%;
-  align-items: center;
+  padding-left: 5%;
+  // align-items: center;
 }
 .ant-input,.ant-input-affix-wrapper{
   border: none;
-  border-bottom:1px solid white;
-  outline: 0 $imp;
   background:rgba(219, 22, 47, 0.01);
-
-  font-family: inherit;
+  font-family:$Raleway;
+  color: white;
   width: 100%;
-  border: 0;
-  // border-bottom: 2px solid $gray;
-  outline: 0;
-  font-size: 1.3rem;
-  color:white;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;  
+  outline: 0$imp;
+}
+.ant-input-affix-wrapper{
+  outline: none $imp;
 
-
-
+  border-bottom:1px solid white $imp;
+  &:focus{
+    outline: 0 $imp;
+  }
+  &:active{
+    outline: 0 $imp;
+  }
 
 }
 
 .ant-btn{
   border: none;
-  background: #B74639;//rgba(219, 22, 47,0.5);
+  font-family: $Catamaran;
+  background: #B74639 $imp;
   box-shadow: -7px 10px 24px -1px rgba(0, 0, 0, 0.9);
+  color: #5AA8FE;
 
 
   &:hover{
@@ -115,6 +118,24 @@ $background-gradient: linear-gradient(
 
   
 }
+.ant-form-item-explain{
+  color: white $imp;
+  font-family: $Raleway;
+  text-align: left $imp;
+  font-size: 1vw;
+
+}
+.ant-form-item-control-input,.ant-form-item-control,input,.ant-form-item-control-input-content{
+  outline: 0 $imp;
+  &:focus{
+    outline: 0 $imp;
+  }
+  &:active{
+    outline: 0 $imp;
+  }
+}
+
+
 
 
 

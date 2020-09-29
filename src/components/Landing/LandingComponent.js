@@ -13,7 +13,7 @@ const Landing = () => {
   return (
     <div className="login">
       <div className="login_tag-line">
-        change the way you think <br /> with flash notes
+        <div style={{width:"45vw",paddingLeft:"0vw"}}>start the  new way  <br /> of learning  <br/>from today</div>
       </div>
 
       <div className="login__input-area">
@@ -29,9 +29,10 @@ const Landing = () => {
               <strong>prepare your content in no time</strong>
             </p>
           </div>
-          <Button block className="login__input-area__btn-google">hello</Button>
+          <Button block className="login__input-area__btn-google" icon={<img style={{height:"30px"}}src="/images/loginScreen/googleIcon.png"></img>}>Continue with google</Button>
         </div>
         <div className="login__input-area__content">
+          
         <Login/>
         </div>
         <div>
