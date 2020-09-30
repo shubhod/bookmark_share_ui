@@ -8,8 +8,16 @@ const BasicForm = (props) => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
-  const { isSignIn } = useSigInSignUpContext();
-  console.log(isSignIn);
+  let inputTimer = null;
+  const {
+    isSignIn,
+    onClickLogin,
+    isPassInpHidden,
+    onInpUsrName,
+    userNameRef,
+    passwordRef
+  } = useSigInSignUpContext();
+
   return (
     <Form
       name="normal_login"
@@ -31,10 +39,16 @@ const BasicForm = (props) => {
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
           placeholder="Username"
+          ref={userNameRef}
+          onInput={(event)=>{
+            let lastEvent={...event};
+            clearTimeout(inputTimer);
+            inputTimer=setTimeout(()=>{onInpUsrName(lastEvent)},300);
+          }}
         />
       </Form.Item>
       <Form.Item
-        hidden={isSignIn}
+        hidden={isSignIn && isPassInpHidden}
         name="password"
         rules={[
           {
@@ -44,15 +58,22 @@ const BasicForm = (props) => {
         ]}
       >
         <Input
+          ref={passwordRef}
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           placeholder="Password"
         />
-        
       </Form.Item>
 
       <Form.Item>
-        <Button block htmlType="submit" className="btn-login">
+        <Button
+          block
+          htmlType="submit"
+          className="btn-login"
+          onClick={() => {
+            onClickLogin();
+          }}
+        >
           Log in
         </Button>
       </Form.Item>

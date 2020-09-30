@@ -45,7 +45,7 @@ $background-gradient: linear-gradient(
     flex-direction: column;
     align-items: center;
     padding-bottom: 10%;
-    width: 70%;
+    width: 65%;
 
   }
   #{&}__header__tagline {
@@ -68,9 +68,7 @@ $background-gradient: linear-gradient(
   }
   #{&}__content{
     animation-duration: 2s;
-    width: 70%;
-    
-
+    width: 65%;
   }
 }
 
@@ -123,6 +121,7 @@ $background-gradient: linear-gradient(
   }
   #{&}__link{
     font-size: 18px;
+    cursor: pointer;
   }
 }
 
@@ -136,9 +135,7 @@ $background-gradient: linear-gradient(
   &:hover{
     border: none;
     background:none;
-  }
-
-  
+  }  
 }
 .ant-form-item-explain{
   color: white $imp;
