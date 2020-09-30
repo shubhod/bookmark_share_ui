@@ -9,6 +9,7 @@ const LoginSignUp = (props) => {
   const { toggleSignInSignUp, signInSignUp } = props;
   const [animation, setAnimation] = useState(null);
   const { explanation, link } = signInSignUp.formFooter;
+  console.log(signInSignUp.isSignIn);
   return (
     <div className="login">
       <div className="login_tag-line">
@@ -45,7 +46,7 @@ const LoginSignUp = (props) => {
           </Button>
         </div>
         <div className={"login__input-area__content" + " " + animation}>
-          <Login />
+          {(signInSignUp.isSignIn)?<SignUp/>: <Login />}
           <div className="form-footer">
             <div className="form-footer__explanation">{explanation}</div>
             <div
@@ -55,7 +56,7 @@ const LoginSignUp = (props) => {
                 setAnimation("animate__fadeIn animate__slower");
                 setTimeout(() => {
                   setAnimation(null);
-                  console.log("time out activated ")
+                  console.log("time out activated ");
                 },1000);
               }}
             >

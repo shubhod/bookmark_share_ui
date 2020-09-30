@@ -9,7 +9,7 @@ const BasicForm = (props) => {
     console.log("Received values of form: ", values);
   };
   const { isSignIn } = useSigInSignUpContext();
-  console.log(isSignIn)
+  console.log(isSignIn);
   return (
     <Form
       name="normal_login"
