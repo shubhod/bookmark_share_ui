@@ -3,7 +3,7 @@ import { Button } from "antd";
 import SignUp from "./SignUp/SignUpComponent";
 import Login from "./Login/LoginComponent";
 import "./LoginSignUpStyles.scss";
-import { useSigInSignUpContext } from "../../screens/SignInSignUp/SignInSignUpContext";
+// import { useSigInSignUpContext } from "../../screens/SignInSignUp/SignInSignUpContext";
 
 const LoginSignUp = (props) => {
   const { toggleSignInSignUp, signInSignUp } = props;
@@ -37,6 +37,7 @@ const LoginSignUp = (props) => {
             className="login__input-area__btn-google"
             icon={
               <img
+                alt=""
                 style={{ height: "30px" }}
                 src="/images/loginScreen/googleIcon.png"
               />
@@ -45,8 +46,8 @@ const LoginSignUp = (props) => {
             Continue with google
           </Button>
         </div>
-        <div className={"login__input-area__content" + " " + animation}>
-          {(signInSignUp.isSignIn)?<SignUp/>: <Login />}
+        <div className={`login__input-area__content  ${animation}`}> 
+          {(signInSignUp.isSignIn)?<Login />:<SignUp/>}
           <div className="form-footer">
             <div className="form-footer__explanation">{explanation}</div>
             <div

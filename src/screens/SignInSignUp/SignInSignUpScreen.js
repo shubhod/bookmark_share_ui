@@ -30,7 +30,7 @@ const SignInSiginUpScreen = () => {
       setSignInSignUp({
         ...signInSignUp,
         isSignIn: false,
-        isPassInpHidden:true,
+        isPassInpHidden: true,
         formFooter: formSignUpFooter,
       });
     } else {
@@ -41,7 +41,7 @@ const SignInSiginUpScreen = () => {
       });
     }
   };
-  const onClickLogin = () => {
+  const onClickContinue = (event) => {
     if (signInSignUp.isSignIn) {
       if (signInSignUp.userName) {
         setSignInSignUp({ ...signInSignUp, isPassInpHidden: false });
@@ -52,16 +52,17 @@ const SignInSiginUpScreen = () => {
     }
   };
   const onInpUsrName = (event) => {
-    setSignInSignUp({ ...signInSignUp, userName: "eaeea" });
     if (!event.target.value.length) {
-      setSignInSignUp({ ...signInSignUp, isPassInpHidden: true });
+      setSignInSignUp({ ...signInSignUp,userName:event.target.value,isPassInpHidden: true });
+    } else {
+      setSignInSignUp({ ...signInSignUp, userName: event.target.value });
     }
   };
 
   return (
     <LoginSignUpContext
       isSignIn={signInSignUp.isSignIn}
-      onClickLogin={onClickLogin}
+      onClickContinue={onClickContinue}
       isPassInpHidden={signInSignUp.isPassInpHidden}
       isUserNameEmpty={signInSignUp.isUserNameEmpty}
       onInpUsrName={onInpUsrName}

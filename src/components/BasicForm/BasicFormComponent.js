@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Form, Input, Button } from "antd";
+import { Form, Input } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useSigInSignUpContext } from "../../screens/SignInSignUp/SignInSignUpContext";
 
@@ -11,7 +11,6 @@ const BasicForm = (props) => {
   let inputTimer = null;
   const {
     isSignIn,
-    onClickLogin,
     isPassInpHidden,
     onInpUsrName,
     userNameRef,
@@ -63,19 +62,6 @@ const BasicForm = (props) => {
           type="password"
           placeholder="Password"
         />
-      </Form.Item>
-
-      <Form.Item>
-        <Button
-          block
-          htmlType="submit"
-          className="btn-login"
-          onClick={() => {
-            onClickLogin();
-          }}
-        >
-          Log in
-        </Button>
       </Form.Item>
       {props.children}
     </Form>

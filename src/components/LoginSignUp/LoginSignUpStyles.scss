@@ -23,21 +23,18 @@ $background-gradient: linear-gradient(
   flex-wrap: row wrap;
   flex-basis: 100%;
   /* don't forget to set a duration! */
-
-  
 }
 .login__input-area {
-  flex-basis: 45%;
+  flex-basis: 55%;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
-  color:white;
-  background-color: #f6fedb;
+  color: white;
   border-radius: 5px;
   box-shadow: -7px 10px 24px -1px rgba(173, 101, 101, 0.5);
-  background: rgba(219, 22, 47, 0.4);
-  order: 2;
+  background: rgba(219, 22, 47, 0.6);
+  order: 1;
 
   #{&}__header {
     text-align: center;
@@ -46,11 +43,10 @@ $background-gradient: linear-gradient(
     align-items: center;
     padding-bottom: 10%;
     width: 65%;
-
   }
   #{&}__header__tagline {
     margin-top: -4vw;
-    color: white;
+    color: white; 
   }
   #{&}__header__tagline > p:nth-child(1) {
     font-size: 2.5vw;
@@ -66,47 +62,35 @@ $background-gradient: linear-gradient(
     box-sizing: border-box;
     width: 12vw;
   }
-  #{&}__content{
+  #{&}__content {
     animation-duration: 2s;
     width: 65%;
   }
 }
 
 .login_tag-line {
-  order: 1;
+  order: 2;
   height: 100%;
   color: whitesmoke;
   font-size: 5vw;
-  font-family: $Raleway;
+  font-family: $Catamaran;
   font-weight: 500;
   flex-basis: 65%;
   display: flex;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: rgba(5, 25, 55, 0.7);
+  background-color: rgba(5, 25, 55, 0.6);
   padding-top: 10%;
   padding-left: 5%;
 }
-.ant-input,.ant-input-affix-wrapper{
-  border: none;
-  background:rgba(219, 22, 47, 0.01);
-  font-family:$Raleway;
-  color: white;
+.ant-input-affix-wrapper {
+  background: rgba(219, 22, 47, 0.01);
+  // box-shadow: -7px 10px 24px -1px rgba(0, 0, 0, 0.9);
+  font-family: $Raleway;
+  color: white;  
   width: 100%;
-  outline: 0$imp;
 }
-.ant-input-affix-wrapper{
-  outline: none $imp;
 
-  border-bottom:1px solid white $imp;
-  &:focus{
-    outline: 0 $imp;
-  }
-  &:active{
-    outline: 0 $imp;
-  }
-
-}
 
 .form-footer {
   display: flex;
@@ -116,45 +100,37 @@ $background-gradient: linear-gradient(
   font-family: $Raleway;
   padding-top: 2vh;
 
-  #{&}__explanation{
-      font-size: 15px;
+  #{&}__explanation {
+    font-size: 15px;
   }
-  #{&}__link{
+  #{&}__link {
     font-size: 18px;
     cursor: pointer;
   }
 }
 
-.ant-btn{
+.ant-btn {
   border: none;
   font-family: $Catamaran;
-  background: #B74639 $imp;
+  background: #b74639 $imp;
   box-shadow: -7px 10px 24px -1px rgba(0, 0, 0, 0.9);
-  color:white;
+  color: white;  
   height: 5.5vh;
-  &:hover{
+  &:hover {
     border: none;
-    background:none;
-  }  
+    background: none;
+  }
 }
-.ant-form-item-explain{
+.ant-form-item-explain {
   color: white $imp;
   font-family: $Raleway;
   text-align: left $imp;
   font-size: 1vw;
+}
+.ant-input{
+  background: rgba(219, 22, 47, 0.01);
+  color: white;
 
 }
-.ant-form-item-control-input,.ant-form-item-control,input,.ant-form-item-control-input-content{
-  outline: 0 $imp;
-  &:focus{
-    outline: 0 $imp;
-  }
-  &:active{
-    outline: 0 $imp;
-  }
-}
-
-
-
 
 
