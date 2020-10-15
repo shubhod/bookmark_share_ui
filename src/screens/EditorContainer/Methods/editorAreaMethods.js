@@ -9,7 +9,7 @@ export const changeFontOptionEditorMenu = (
     newFontControl = { ...fontControl };
     newFontControl.fontName = fontArray[fontArray.length - 1].face;
     setFontControl(newFontControl);
-  } else if (event.target.tagName == "FONT") {
+  } else if (event.target.tagName === "FONT") {
     newFontControl = { ...fontControl };
     newFontControl.fontName = event.target.face;
     setFontControl(newFontControl);
@@ -26,18 +26,18 @@ export const execContentEditableCmd = (
   attrId
 ) => {
   var newFontControl = null;
-  if (cmd == "insertHTML") {
+  if (cmd === "insertHTML") {
     document.execCommand(cmd, true, value);
   } else {
     document.execCommand(cmd, false, value);
   }
 
-  if (cmd == "fontName") {
+  if (cmd === "fontName") {
     newFontControl = { ...fontControl };
     newFontControl.fontName = value;
     setFontControl(newFontControl);
   }
-  if (cmd == "fontSize") {
+  if (cmd === "fontSize") {
     newFontControl = { ...fontControl };
     newFontControl.fontSize = value;
     setFontControl(newFontControl);

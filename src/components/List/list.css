@@ -1,0 +1,38 @@
+.ant-list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #EFFFFA;
+  -ms-flex-preferred-size: 900px;
+      flex-basis: 900px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  color: rgba(0, 0, 0, 0.85);
+  font-family: "Raleway", sans-serif;
+  padding-bottom: 20px;
+}
+
+.ant-list-item .ant-list-item__content {
+  position: absolute;
+  margin-top: 30px;
+}
+
+.ant-list-item .ant-list-item__heading {
+  padding-top: 0;
+  font-size: 30px;
+}
+
+.ant-list-item .ant-list-item__footer {
+  margin-top: 40px;
+  font-size: 15px;
+}
+
+.ant-list {
+  line-height: 1;
+}
+/*# sourceMappingURL=list.css.map */

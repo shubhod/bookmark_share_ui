@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,UAAU,CAAA;EACN,SAAS,EAAE,IAAI;EACf,KAAK,EAAC,KAAK;EACX,WAAW,ECFL,SAAS,EAAE,UAAU;EDG3B,WAAW,EAAG,MAAK,CCajB,UAAU;CDZf",
+    "sources": [
+        "NotFoundStyles.scss",
+        "../../../variables.scss"
+    ],
+    "names": [],
+    "file": "NotFoundStyles.css"
+}

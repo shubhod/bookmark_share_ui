@@ -1,13 +1,30 @@
 import React from "react";
 import BasicForm from "../../BasicForm/BasicFormComponent";
 import "./SignUpnStyles.scss";
-import { Form, Input,Button } from "antd";
-import {MobileOutlined} from "@ant-design/icons";
+import { Form, Input, Button } from "antd";
+import { MobileOutlined,LockOutlined} from "@ant-design/icons";
 import BasicFormBtn from "../../BasicForm/BasicFormBtnComponent";
 const SignUp = () => {
-  console.log("SiginUp");
+  const MSG_PASSWORD_REQUIRED="confirm password required ";
   return (
     <BasicForm>
+      <Form.Item
+        name="confirm"
+        dependencies={['password']}
+        rules={[
+          {
+            required: true,
+            message: MSG_PASSWORD_REQUIRED,
+          },
+        ]}
+      >
+        <Input
+          // ref={passwordRef}
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+          placeholder="Confirm  password"
+        />
+      </Form.Item>
       <Form.Item
         name="mobileNo"
         rules={[
@@ -18,13 +35,12 @@ const SignUp = () => {
         ]}
       >
         <Input
-          // ref={passwordRef}
           prefix={<MobileOutlined className="site-form-item-icon" />}
           type="text"
           placeholder="mobileNo"
         />
       </Form.Item>
-        <BasicFormBtn/>
+      <BasicFormBtn />
       <div className="form-agreement">
         By creating an account, you are agreeing to our Terms of Service and
         Privacy Policy.

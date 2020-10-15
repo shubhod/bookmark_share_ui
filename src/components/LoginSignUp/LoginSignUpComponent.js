@@ -5,11 +5,9 @@ import Login from "./Login/LoginComponent";
 import "./LoginSignUpStyles.scss";
 // import { useSigInSignUpContext } from "../../screens/SignInSignUp/SignInSignUpContext";
 
-const LoginSignUp = (props) => {
-  const { toggleSignInSignUp, signInSignUp } = props;
+const LoginSignUp = ({ toggleSignInSignUp, signInSignUp }) => {
   const [animation, setAnimation] = useState(null);
   const { explanation, link } = signInSignUp.formFooter;
-  console.log(signInSignUp.isSignIn);
   return (
     <div className="login">
       <div className="login_tag-line">

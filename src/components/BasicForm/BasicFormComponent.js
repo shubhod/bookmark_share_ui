@@ -5,8 +5,21 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useSigInSignUpContext } from "../../screens/SignInSignUp/SignInSignUpContext";
 
 const BasicForm = (props) => {
+  const MSG_USER_NOT_FOUND="user not found";
+  const MSG_USER_NAME_REQUIRED="Please input your Username!";
+  const MSG_PASSWORD_REQUIRED="Please input your Password";
+  
+
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
+  };
+  const validateMessages={
+    types:{
+      email:"not a valid email",
+      number:"is not a valid number"
+    }
+      
+
   };
   let inputTimer = null;
   const {
@@ -14,9 +27,10 @@ const BasicForm = (props) => {
     isPassInpHidden,
     onInpUsrName,
     userNameRef,
-    passwordRef
+    passwordRef,
+    isUserFound
   } = useSigInSignUpContext();
-
+  console.log(isUserFound);
   return (
     <Form
       name="normal_login"
@@ -28,10 +42,13 @@ const BasicForm = (props) => {
     >
       <Form.Item
         name="username"
+        hasFeedback
+        help={isUserFound?null:MSG_USER_NOT_FOUND}
+        
         rules={[
           {
             required: true,
-            message: "Please input your Username!",
+            message:MSG_USER_NAME_REQUIRED 
           },
         ]}
       >
@@ -52,7 +69,7 @@ const BasicForm = (props) => {
         rules={[
           {
             required: true,
-            message: "Please input your Password!",
+            message: MSG_PASSWORD_REQUIRED,
           },
         ]}
       >

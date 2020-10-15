@@ -25,14 +25,14 @@ $background-gradient: linear-gradient(
   /* don't forget to set a duration! */
 }
 .login__input-area {
-  flex-basis: 55%;
+  flex-basis: 35%;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
   color: white;
   border-radius: 5px;
-  box-shadow: -7px 10px 24px -1px rgba(173, 101, 101, 0.5);
+  box-shadow: 6px -5px 24px -4px rgba(0,0,0,0.75);
   background: rgba(219, 22, 47, 0.6);
   order: 1;
 
@@ -42,7 +42,7 @@ $background-gradient: linear-gradient(
     flex-direction: column;
     align-items: center;
     padding-bottom: 10%;
-    width: 65%;
+    width: 60%;
   }
   #{&}__header__tagline {
     margin-top: -4vw;
@@ -64,7 +64,7 @@ $background-gradient: linear-gradient(
   }
   #{&}__content {
     animation-duration: 2s;
-    width: 65%;
+    width: 60%;
   }
 }
 
@@ -79,7 +79,7 @@ $background-gradient: linear-gradient(
   display: flex;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: rgba(5, 25, 55, 0.6);
+  background-color: rgba(5, 25, 55, 0.5);
   padding-top: 10%;
   padding-left: 5%;
 }

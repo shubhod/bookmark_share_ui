@@ -3,7 +3,11 @@ import BasicForm from "../../BasicForm/BasicFormComponent";
 import { Form,Checkbox } from "antd";
 import "./LoginStyles.scss"
 import BasicFormBtn from "../../BasicForm/BasicFormBtnComponent";
+import { useSigInSignUpContext } from "../../../screens/SignInSignUp/SignInSignUpContext";
+import NotFound from "../../../shared/components/NotFound/NotFoundComponent";
+
 const Login = () => {
+  const isUserFound=useSigInSignUpContext();
   return (
     <BasicForm>
     <BasicFormBtn/>
@@ -12,6 +16,7 @@ const Login = () => {
           <Checkbox>Remember me</Checkbox>
         </Form.Item>         
       </div>
+
     </BasicForm>
   );
 };
