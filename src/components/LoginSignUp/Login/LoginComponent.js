@@ -9,15 +9,15 @@ import NotFound from "../../../shared/components/NotFound/NotFoundComponent";
 const Login = () => {
   const isUserFound=useSigInSignUpContext();
   return (
-    <BasicForm>
+    <>
     <BasicFormBtn/>
       <div className="login-remember" >
       <Form.Item name="remember" valuePropName="checked" noStyle>
           <Checkbox>Remember me</Checkbox>
         </Form.Item>         
       </div>
+      </>
 
-    </BasicForm>
   );
 };
 

@@ -7,7 +7,7 @@ import BasicFormBtn from "../../BasicForm/BasicFormBtnComponent";
 const SignUp = () => {
   const MSG_PASSWORD_REQUIRED="confirm password required ";
   return (
-    <BasicForm>
+    <>
       <Form.Item
         name="confirm"
         dependencies={['password']}
@@ -45,7 +45,7 @@ const SignUp = () => {
         By creating an account, you are agreeing to our Terms of Service and
         Privacy Policy.
       </div>
-    </BasicForm>
+    </>
   );
 };
 

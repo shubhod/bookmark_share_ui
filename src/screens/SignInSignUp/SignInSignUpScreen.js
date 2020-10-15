@@ -2,9 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import LoginSignUp from "../../components/LoginSignUp/LoginSignUpComponent";
 import LoginSignUpContext from "./SignInSignUpContext";
 import { checkUserNameExists } from "./apis";
-  /*ignore jslint start*/
-  
-import {useInitialState} from "../../helper/useInitialState";
+/*ignore jslint start*/
+
+import { useInitialState } from "../../helper/useInitialState";
+import Login from "../../components/LoginSignUp/Login/LoginComponent";
+import SignUp from "../../components/LoginSignUp/SignUp/SignUpComponent";
+import BasicForm from "../../components/BasicForm/BasicFormComponent";
 
 const SignInSiginUpScreen = () => {
   const formSignUpFooter = {
@@ -16,7 +19,7 @@ const SignInSiginUpScreen = () => {
     link: `Create account`,
   };
 
-  const [signInSignUp, setSignInSignUp] = useState({         
+  const [signInSignUp, setSignInSignUp] = useState({
     isSignIn: true,
     userName: null,
     password: null,
@@ -27,14 +30,13 @@ const SignInSiginUpScreen = () => {
     passwordRef: useRef(),
     isUserFound: true,
     loading: false,
-
   });
 
   useEffect(() => {
     signInSignUp.userNameRef.current.focus();
   });
-  const getInitialState=useInitialState(signInSignUp);
-  
+  const getInitialState = useInitialState(signInSignUp);
+
   const toggleSignInSignUp = () => {
     if (signInSignUp.isSignIn) {
       setSignInSignUp({
@@ -48,7 +50,7 @@ const SignInSiginUpScreen = () => {
       setSignInSignUp({
         ...signInSignUp,
         ...getInitialState(),
-        isSignIn:true,
+        isSignIn: true,
         formFooter: formSignInFooter,
       });
     }
@@ -59,26 +61,32 @@ const SignInSiginUpScreen = () => {
       if (signInSignUp.userName) {
         setSignInSignUp({ ...signInSignUp, loading: true });
         if (await checkUserNameExists(signInSignUp.userName)) {
-          setSignInSignUp({ ...signInSignUp,loading:false,isPassInpHidden: false });
+          setSignInSignUp({
+            ...signInSignUp,
+            loading: false,
+            isPassInpHidden: false,
+          });
           setTimeout(() => {
             signInSignUp.passwordRef.current.focus();
           }, 100);
+        } else {
+          setSignInSignUp({ ...signInSignUp, isUserFound: false });
         }
-        else {
-          setSignInSignUp({ ...signInSignUp,isUserFound:false });
-        }
-      } 
+      }
     }
   };
   const onInpUsrName = (event) => {
     if (!event.target.value.length) {
       setSignInSignUp({
         ...signInSignUp,
-        userName: event.target.value
-
+        userName: event.target.value,
       });
     } else {
-      setSignInSignUp({ ...signInSignUp, userName: event.target.value,isUserFound: true});
+      setSignInSignUp({
+        ...signInSignUp,
+        userName: event.target.value,
+        isUserFound: true,
+      });
     }
   };
 
@@ -107,7 +115,10 @@ const SignInSiginUpScreen = () => {
       <LoginSignUp
         toggleSignInSignUp={toggleSignInSignUp}
         signInSignUp={signInSignUp}
-      />
+      >
+        <BasicForm>{signInSignUp.isSignIn ? <Login /> : <SignUp />}</BasicForm>
+
+      </LoginSignUp>
     </LoginSignUpContext>
   );
 };

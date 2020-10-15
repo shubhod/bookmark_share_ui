@@ -5,7 +5,7 @@ import Login from "./Login/LoginComponent";
 import "./LoginSignUpStyles.scss";
 // import { useSigInSignUpContext } from "../../screens/SignInSignUp/SignInSignUpContext";
 
-const LoginSignUp = ({ toggleSignInSignUp, signInSignUp }) => {
+const LoginSignUp = ({ toggleSignInSignUp, signInSignUp ,children}) => {
   const [animation, setAnimation] = useState(null);
   const { explanation, link } = signInSignUp.formFooter;
   return (
@@ -45,7 +45,7 @@ const LoginSignUp = ({ toggleSignInSignUp, signInSignUp }) => {
           </Button>
         </div>
         <div className={`login__input-area__content  ${animation}`}> 
-          {(signInSignUp.isSignIn)?<Login />:<SignUp/>}
+          {children}
           <div className="form-footer">
             <div className="form-footer__explanation">{explanation}</div>
             <div
