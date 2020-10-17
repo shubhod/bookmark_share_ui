@@ -15,10 +15,10 @@ export const toggleFocusOfNotes = (
 ) => {
   const currentElement = event.target;
   const currentElementParent = event.target.parentNode;
-  if (title != "All Notes") {
+  if (title !== "All Notes") {
     remvBorderFromNotes(previousNotesRef);
     remvBorderFromNotes(currentNoteRef);
-    if (currentElement.className == "notes") {
+    if (currentElement.className ==="notes") {
       addBorderToNotes({ current: currentElement });
       previousNotesRef.current = currentElement;
     } else {

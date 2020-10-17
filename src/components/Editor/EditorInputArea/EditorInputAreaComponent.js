@@ -15,7 +15,6 @@ export default (props) => {
   const allNotes = useSelector((state) => {
     return state.mainNavReducer;
   });
-  console.log("inputarera")
 
   return (
     <div className="editor-input-area">

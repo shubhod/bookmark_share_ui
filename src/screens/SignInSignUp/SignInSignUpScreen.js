@@ -8,6 +8,7 @@ import Login from "../../components/LoginSignUp/Login/LoginComponent";
 import SignUp from "../../components/LoginSignUp/SignUp/SignUpComponent";
 import BasicForm from "../../components/LoginSignUp/BasicForm/BasicFormComponent";
 import BasicFormBtn from "../../components/LoginSignUp/BasicForm/BasicFormBtnComponent";
+import { makeMethods } from "./methods";
 
 const SignInSiginUpScreen = () => {
   const formSignUpFooter = {
@@ -86,18 +87,13 @@ const SignInSiginUpScreen = () => {
       }
     }
   };
-  const onInpUsrName = (event) => { 
-    console.log(isPassInpHidden,isSignIn);
-    if (!event.target.value.length) {
+
+  const onInpUsrName = (event) => {
+    if (isSignIn) {
       setSignInSignUp({
         ...signInSignUp,
         userName: event.target.value,
-      });
-    } else {
-      setSignInSignUp({
-        ...signInSignUp,
-        userName: event.target.value,
-        isPassInpHidden:true,
+        isPassInpHidden: true,
         isUserFound: true,
       });
     }
@@ -123,7 +119,7 @@ const SignInSiginUpScreen = () => {
               <BasicFormBtn onClick={onClickContinue} />
             </Login>
           ) : (
-            <SignUp>
+            <SignUp {...{ passwordRef }}>
               <BasicFormBtn />
             </SignUp>
           )}

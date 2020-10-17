@@ -37,9 +37,8 @@ const BasicForm = ({
             let lastEvent = { ...event };
             clearTimeout(inputTimer);
             inputTimer = setTimeout(() => {
-              
+              onInpUsrName(lastEvent);
             }, 300);
-            onInpUsrName(lastEvent);
           }}
         />
       </Form.Item>

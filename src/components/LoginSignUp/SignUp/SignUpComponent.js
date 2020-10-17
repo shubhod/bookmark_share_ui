@@ -4,7 +4,7 @@ import "./SignUpnStyles.scss";
 import { Form, Input } from "antd";
 import { LockOutlined } from "@ant-design/icons";
 
-const SignUp = ({ children }) => {
+const SignUp = ({ children, passwordRef}) => {
   const MSG_PASSWORD_REQUIRED = "confirm password required ";
   return (
     <>
@@ -14,12 +14,12 @@ const SignUp = ({ children }) => {
         rules={[
           {
             required: true,
-            message: MSG_PASSWORD_REQUIRED,
+            message: MSG_PASSWORD_REQUIRED
           },
         ]}
       >
         <Input
-          // ref={passwordRef}
+          ref={passwordRef}
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           placeholder="Confirm  password"
