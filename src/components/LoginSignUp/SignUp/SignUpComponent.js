@@ -4,7 +4,7 @@ import "./SignUpnStyles.scss";
 import { Form, Input, Button } from "antd";
 import { MobileOutlined,LockOutlined} from "@ant-design/icons";
 import BasicFormBtn from "../../BasicForm/BasicFormBtnComponent";
-const SignUp = () => {
+const SignUp = ({children}) => {
   const MSG_PASSWORD_REQUIRED="confirm password required ";
   return (
     <>
@@ -40,7 +40,7 @@ const SignUp = () => {
           placeholder="mobileNo"
         />
       </Form.Item>
-      <BasicFormBtn />
+      {children}
       <div className="form-agreement">
         By creating an account, you are agreeing to our Terms of Service and
         Privacy Policy.

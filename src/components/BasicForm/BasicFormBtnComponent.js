@@ -1,13 +1,11 @@
 import React from "react";
 import {Form,Button} from 'antd';
-import { useSigInSignUpContext } from "../../screens/SignInSignUp/SignInSignUpContext";
-const BasicFormBtn = () => {
-  const {onClickContinue}=useSigInSignUpContext();
+const BasicFormBtn = ({onClick}) => {
   return (
     <Form.Item>
-      <Button block htmlType="submit" className="btn-login" onClick={(event) => {onClickContinue(event)}}>
+      <Button block htmlType="submit" className="btn-login" onClick={onClick}>
         Log in
-      </Button>
+    </Button>
     </Form.Item>
   );
 };

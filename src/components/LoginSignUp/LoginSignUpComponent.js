@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "antd";
-import SignUp from "./SignUp/SignUpComponent";
-import Login from "./Login/LoginComponent";
 import "./LoginSignUpStyles.scss";
-// import { useSigInSignUpContext } from "../../screens/SignInSignUp/SignInSignUpContext";
 
 const LoginSignUp = ({ toggleSignInSignUp, signInSignUp ,children}) => {
   const [animation, setAnimation] = useState(null);
@@ -59,6 +56,7 @@ const LoginSignUp = ({ toggleSignInSignUp, signInSignUp ,children}) => {
                 },1000);
               }}
             >
+  
               {link}
             </div>
           </div>

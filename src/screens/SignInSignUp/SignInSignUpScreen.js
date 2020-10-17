@@ -8,6 +8,7 @@ import { useInitialState } from "../../helper/useInitialState";
 import Login from "../../components/LoginSignUp/Login/LoginComponent";
 import SignUp from "../../components/LoginSignUp/SignUp/SignUpComponent";
 import BasicForm from "../../components/BasicForm/BasicFormComponent";
+import BasicFormBtn from "../../components/BasicForm/BasicFormBtnComponent";
 
 const SignInSiginUpScreen = () => {
   const formSignUpFooter = {
@@ -33,7 +34,7 @@ const SignInSiginUpScreen = () => {
   });
 
   useEffect(() => {
-    signInSignUp.userNameRef.current.focus();
+    // signInSignUp.userNameRef.current.focus();
   });
   const getInitialState = useInitialState(signInSignUp);
 
@@ -99,27 +100,48 @@ const SignInSiginUpScreen = () => {
     isUserFound,
     loading,
   } = signInSignUp;
+  
+  const basicFormProps={
+    isSignIn,
+    isPassInpHidden,
+    onInpUsrName,
+    userNameRef,
+    passwordRef,
+    isUserFound
+  }
 
   return (
-    <LoginSignUpContext
-      isSignIn={isSignIn}
-      onClickContinue={onClickContinue}
-      isPassInpHidden={isPassInpHidden}
-      isUserNameEmpty={isUserNameEmpty}
-      onInpUsrName={onInpUsrName}
-      userNameRef={userNameRef}
-      passwordRef={passwordRef}
-      isUserFound={isUserFound}
-      loading={loading}
-    >
+    // <LoginSignUpContext
+    //   isSignIn={isSignIn}
+    //   onClickContinue={onClickContinue}
+    //   isPassInpHidden={isPassInpHidden}
+    //   isUserNameEmpty={isUserNameEmpty}
+    //   onInpUsrName={onInpUsrName}
+    //   userNameRef={userNameRef}
+    //   passwordRef={passwordRef}
+    //   isUserFound={isUserFound}
+    //   loading={loading}
+    // >
+    <>
       <LoginSignUp
         toggleSignInSignUp={toggleSignInSignUp}
         signInSignUp={signInSignUp}
       >
-        <BasicForm>{signInSignUp.isSignIn ? <Login /> : <SignUp />}</BasicForm>
-
+        {signInSignUp.isSignIn ? (
+          <BasicForm {...basicFormProps}>
+            <Login>
+              <BasicFormBtn  onClick={onClickContinue}/>
+            </Login>
+          </BasicForm>
+        ) : (
+          <BasicForm >
+            <SignUp>
+            <BasicFormBtn />
+            </SignUp>
+          </BasicForm>
+        )}
       </LoginSignUp>
-    </LoginSignUpContext>
+      </>
   );
 };
 
