@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Button } from "antd";
 import "./LoginSignUpStyles.scss";
+import Form from "antd/lib/form/Form";
 
-const LoginSignUp = ({ toggleSignInSignUp, signInSignUp ,children}) => {
+const LoginSignUp = ({ toggleSignInSignUp, signInSignUp,formRef, children }) => {
   const [animation, setAnimation] = useState(null);
   const { explanation, link } = signInSignUp.formFooter;
+  const onFinish=(values)=>{
+    console.log(values);
+  }
   return (
     <div className="login">
       <div className="login_tag-line">
@@ -41,8 +45,19 @@ const LoginSignUp = ({ toggleSignInSignUp, signInSignUp ,children}) => {
             Continue with google
           </Button>
         </div>
-        <div className={`login__input-area__content  ${animation}`}> 
-          {children}
+        <div className={`login__input-area__content  ${animation}`}>
+          <Form
+            ref={formRef}
+            name="normal_login"
+            initialValues={{
+              remember: false,
+            }}
+            style={{ width: "100%", textAlign: "center" }}
+            onFinish={onFinish}
+          >
+            {children}
+          </Form>
+
           <div className="form-footer">
             <div className="form-footer__explanation">{explanation}</div>
             <div
@@ -53,10 +68,9 @@ const LoginSignUp = ({ toggleSignInSignUp, signInSignUp ,children}) => {
                 setTimeout(() => {
                   setAnimation(null);
                   console.log("time out activated ");
-                },1000);
+                }, 1000);
               }}
             >
-  
               {link}
             </div>
           </div>

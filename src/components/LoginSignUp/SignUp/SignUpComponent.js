@@ -1,16 +1,16 @@
 import React from "react";
-import BasicForm from "../../BasicForm/BasicFormComponent";
 import "./SignUpnStyles.scss";
-import { Form, Input, Button } from "antd";
-import { MobileOutlined,LockOutlined} from "@ant-design/icons";
-import BasicFormBtn from "../../BasicForm/BasicFormBtnComponent";
-const SignUp = ({children}) => {
-  const MSG_PASSWORD_REQUIRED="confirm password required ";
+
+import { Form, Input } from "antd";
+import { LockOutlined } from "@ant-design/icons";
+
+const SignUp = ({ children }) => {
+  const MSG_PASSWORD_REQUIRED = "confirm password required ";
   return (
     <>
       <Form.Item
         name="confirm"
-        dependencies={['password']}
+        dependencies={["password"]}
         rules={[
           {
             required: true,
@@ -23,21 +23,6 @@ const SignUp = ({children}) => {
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           placeholder="Confirm  password"
-        />
-      </Form.Item>
-      <Form.Item
-        name="mobileNo"
-        rules={[
-          {
-            required: true,
-            message: "Please input your mobileNo!",
-          },
-        ]}
-      >
-        <Input
-          prefix={<MobileOutlined className="site-form-item-icon" />}
-          type="text"
-          placeholder="mobileNo"
         />
       </Form.Item>
       {children}

@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import LoginSignUp from "../../components/LoginSignUp/LoginSignUpComponent";
-import LoginSignUpContext from "./SignInSignUpContext";
 import { checkUserNameExists } from "./apis";
 /*ignore jslint start*/
 
 import { useInitialState } from "../../helper/useInitialState";
 import Login from "../../components/LoginSignUp/Login/LoginComponent";
 import SignUp from "../../components/LoginSignUp/SignUp/SignUpComponent";
-import BasicForm from "../../components/BasicForm/BasicFormComponent";
-import BasicFormBtn from "../../components/BasicForm/BasicFormBtnComponent";
+import BasicForm from "../../components/LoginSignUp/BasicForm/BasicFormComponent";
+import BasicFormBtn from "../../components/LoginSignUp/BasicForm/BasicFormBtnComponent";
 
 const SignInSiginUpScreen = () => {
   const formSignUpFooter = {
@@ -32,13 +31,24 @@ const SignInSiginUpScreen = () => {
     isUserFound: true,
     loading: false,
   });
+  const {
+    isSignIn,
+    isPassInpHidden,
+    userNameRef,
+    passwordRef,
+    isUserFound,
+  } = signInSignUp;
+
+  const formRef = useRef();
 
   useEffect(() => {
-    // signInSignUp.userNameRef.current.focus();
-  });
+    userNameRef.current.focus();
+  }, [isSignIn]);
+
   const getInitialState = useInitialState(signInSignUp);
 
   const toggleSignInSignUp = () => {
+    formRef.current.resetFields();
     if (signInSignUp.isSignIn) {
       setSignInSignUp({
         ...signInSignUp,
@@ -76,7 +86,8 @@ const SignInSiginUpScreen = () => {
       }
     }
   };
-  const onInpUsrName = (event) => {
+  const onInpUsrName = (event) => { 
+    console.log(isPassInpHidden,isSignIn);
     if (!event.target.value.length) {
       setSignInSignUp({
         ...signInSignUp,
@@ -86,62 +97,39 @@ const SignInSiginUpScreen = () => {
       setSignInSignUp({
         ...signInSignUp,
         userName: event.target.value,
+        isPassInpHidden:true,
         isUserFound: true,
       });
     }
   };
 
-  const {
-    isSignIn,
-    isPassInpHidden,
-    isUserNameEmpty,
-    userNameRef,
-    passwordRef,
-    isUserFound,
-    loading,
-  } = signInSignUp;
-  
-  const basicFormProps={
+  const basicFormProps = {
     isSignIn,
     isPassInpHidden,
     onInpUsrName,
     userNameRef,
     passwordRef,
-    isUserFound
-  }
+    isUserFound,
+    formRef,
+  };
+  const loginFormProps = { toggleSignInSignUp, signInSignUp, formRef };
 
   return (
-    // <LoginSignUpContext
-    //   isSignIn={isSignIn}
-    //   onClickContinue={onClickContinue}
-    //   isPassInpHidden={isPassInpHidden}
-    //   isUserNameEmpty={isUserNameEmpty}
-    //   onInpUsrName={onInpUsrName}
-    //   userNameRef={userNameRef}
-    //   passwordRef={passwordRef}
-    //   isUserFound={isUserFound}
-    //   loading={loading}
-    // >
     <>
-      <LoginSignUp
-        toggleSignInSignUp={toggleSignInSignUp}
-        signInSignUp={signInSignUp}
-      >
-        {signInSignUp.isSignIn ? (
-          <BasicForm {...basicFormProps}>
+      <LoginSignUp {...loginFormProps}>
+        <BasicForm {...basicFormProps}>
+          {signInSignUp.isSignIn ? (
             <Login>
-              <BasicFormBtn  onClick={onClickContinue}/>
+              <BasicFormBtn onClick={onClickContinue} />
             </Login>
-          </BasicForm>
-        ) : (
-          <BasicForm >
+          ) : (
             <SignUp>
-            <BasicFormBtn />
+              <BasicFormBtn />
             </SignUp>
-          </BasicForm>
-        )}
+          )}
+        </BasicForm>
       </LoginSignUp>
-      </>
+    </>
   );
 };
 

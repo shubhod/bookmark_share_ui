@@ -15,20 +15,9 @@ const BasicForm = ({
   const MSG_USER_NAME_REQUIRED = "Please input your Username!";
   const MSG_PASSWORD_REQUIRED = "Please input your Password";
 
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
-
   let inputTimer = null;
   return (
-    <Form
-      name="normal_login"
-      initialValues={{
-        remember: true,
-      }}
-      style={{ width: "100%", textAlign: "center" }}
-      onFinish={onFinish}
-    >
+    <>
       <Form.Item
         name="username"
         hasFeedback
@@ -48,8 +37,9 @@ const BasicForm = ({
             let lastEvent = { ...event };
             clearTimeout(inputTimer);
             inputTimer = setTimeout(() => {
-              onInpUsrName(lastEvent);
+              
             }, 300);
+            onInpUsrName(lastEvent);
           }}
         />
       </Form.Item>
@@ -71,7 +61,9 @@ const BasicForm = ({
         />
       </Form.Item>
       {children}
-    </Form>
+           {/* </Form> */}
+
+      </>
   );
 };
 
