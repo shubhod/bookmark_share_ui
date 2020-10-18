@@ -37,7 +37,7 @@ const SignInSiginUpScreen = () => {
     userNameRef,
     passwordRef,
     isUserFound,
-    userName
+    userName,
   } = signInSignUp;
 
   const formRef = useRef();
@@ -55,6 +55,7 @@ const SignInSiginUpScreen = () => {
         ...signInSignUp,
         ...getInitialState(),
         isSignIn: false,
+        isUserFound:false,
         isPassInpHidden: true,
         formFooter: formSignUpFooter,
       });
@@ -69,32 +70,36 @@ const SignInSiginUpScreen = () => {
   };
 
   const onClickSigin = async () => {
-    if (isSignIn) {
-      if (userName) {
-        setSignInSignUp({ ...signInSignUp, loading: true });
-        if (await checkUserNameExists(userName)) {
-          setSignInSignUp({
-            ...signInSignUp,
-            loading: false,
-            isPassInpHidden: false,
-          });
-          setTimeout(() => {
-            passwordRef.current.focus();
-          }, 100);
-        } else {
-          setSignInSignUp({ ...signInSignUp, isUserFound: false });
-        }
+    if (userName) {
+      setSignInSignUp({ ...signInSignUp, loading: true });
+      if (await checkUserNameExists(userName)) {
+        setSignInSignUp({
+          ...signInSignUp,
+          loading: false,
+          isPassInpHidden: false,
+        });
+        setTimeout(() => {
+          passwordRef.current.focus();
+        }, 100);
+      } else {
+        setSignInSignUp({ ...signInSignUp, isUserFound: false });
       }
     }
   };
 
-  const onInpUsrName = (event) => {
+  const onInpUsrName = async (event) => {
     if (isSignIn) {
       setSignInSignUp({
         ...signInSignUp,
         userName: event.target.value,
         isPassInpHidden: true,
         isUserFound: true,
+      });
+    } else {
+      console.log(await checkUserNameExists(userName));
+      setSignInSignUp({
+        ...signInSignUp,
+        isUserFound: await checkUserNameExists(event.target.value),
       });
     }
   };
