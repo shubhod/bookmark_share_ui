@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { checkUserNameExists } from "./apis";
+import { checkUserNameExists,registerUser } from "./apis";
 
 import { useInitialState } from "../../helper/useInitialState";
 
@@ -10,6 +10,7 @@ import LoginSignUp from "../../components/LoginSignUp/LoginSignUpComponent";
 import SignUp from "../../components/LoginSignUp/SignUp/SignUpComponent";
 
 const SignInSiginUpScreen = () => {
+
   const formSignUpFooter = {
     explanation: "Already have an account?",
     link: "Sign in",
@@ -55,7 +56,7 @@ const SignInSiginUpScreen = () => {
         ...signInSignUp,
         ...getInitialState(),
         isSignIn: false,
-        isUserFound:false,
+        isUserFound: false,
         isPassInpHidden: true,
         formFooter: formSignUpFooter,
       });
@@ -70,6 +71,7 @@ const SignInSiginUpScreen = () => {
   };
 
   const onClickSigin = async () => {
+    await registerUser({userName:"dsajdhsjkadhsakjd",password:"blalalala"});
     if (userName) {
       setSignInSignUp({ ...signInSignUp, loading: true });
       if (await checkUserNameExists(userName)) {
@@ -96,13 +98,16 @@ const SignInSiginUpScreen = () => {
         isUserFound: true,
       });
     } else {
-      console.log(await checkUserNameExists(userName));
       setSignInSignUp({
         ...signInSignUp,
         isUserFound: await checkUserNameExists(event.target.value),
       });
     }
   };
+  const onSubmit=async(values)=>{
+    let {confirmPassword,...normalisedValues}=values;
+    await registerUser(normalisedValues);
+  }
 
   const basicFormProps = {
     isSignIn,
@@ -113,11 +118,16 @@ const SignInSiginUpScreen = () => {
     isUserFound,
     formRef,
   };
-  const loginFormProps = { toggleSignInSignUp, signInSignUp, formRef };
+  const loginSignUpProps = {
+    toggleSignInSignUp,
+    signInSignUp,
+    formRef,
+    onSubmit,
+  };
 
   return (
     <>
-      <LoginSignUp {...loginFormProps}>
+      <LoginSignUp {...loginSignUpProps}>
         <BasicForm {...basicFormProps}>
           {isSignIn ? (
             <Login>

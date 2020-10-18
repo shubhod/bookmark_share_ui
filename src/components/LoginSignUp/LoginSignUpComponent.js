@@ -3,12 +3,9 @@ import { Button } from "antd";
 import "./LoginSignUpStyles.scss";
 import Form from "antd/lib/form/Form";
 
-const LoginSignUp = ({ toggleSignInSignUp, signInSignUp,formRef, children }) => {
+const LoginSignUp = ({ toggleSignInSignUp, signInSignUp,formRef, children,onSubmit}) => {
   const [animation, setAnimation] = useState(null);
   const { explanation, link } = signInSignUp.formFooter;
-  const onFinish=(values)=>{
-    console.log(values);
-  }
   return (
     <div className="login">
       <div className="login_tag-line">
@@ -53,7 +50,7 @@ const LoginSignUp = ({ toggleSignInSignUp, signInSignUp,formRef, children }) => 
               remember: false,
             }}
             style={{ width: "100%", textAlign: "center" }}
-            onFinish={onFinish}
+            onFinish={onSubmit}
           >
             {children}
           </Form>

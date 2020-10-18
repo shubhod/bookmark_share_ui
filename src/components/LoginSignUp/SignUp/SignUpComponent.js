@@ -11,7 +11,7 @@ const SignUp = ({ children, passwordRef}) => {
   return (
     <>
       <Form.Item
-        name="confirm"
+        name="confirmPassword"
         dependencies={["password"]}
         rules={[
           {
