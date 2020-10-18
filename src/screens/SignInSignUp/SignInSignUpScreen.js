@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import LoginSignUp from "../../components/LoginSignUp/LoginSignUpComponent";
 import { checkUserNameExists } from "./apis";
-/*ignore jslint start*/
 
 import { useInitialState } from "../../helper/useInitialState";
-import Login from "../../components/LoginSignUp/Login/LoginComponent";
-import SignUp from "../../components/LoginSignUp/SignUp/SignUpComponent";
+
 import BasicForm from "../../components/LoginSignUp/BasicForm/BasicFormComponent";
 import BasicFormBtn from "../../components/LoginSignUp/BasicForm/BasicFormBtnComponent";
-import { makeMethods } from "./methods";
+import Login from "../../components/LoginSignUp/Login/LoginComponent";
+import LoginSignUp from "../../components/LoginSignUp/LoginSignUpComponent";
+import SignUp from "../../components/LoginSignUp/SignUp/SignUpComponent";
 
 const SignInSiginUpScreen = () => {
   const formSignUpFooter = {
@@ -38,6 +37,7 @@ const SignInSiginUpScreen = () => {
     userNameRef,
     passwordRef,
     isUserFound,
+    userName
   } = signInSignUp;
 
   const formRef = useRef();
@@ -68,18 +68,18 @@ const SignInSiginUpScreen = () => {
     }
   };
 
-  const onClickContinue = async () => {
-    if (signInSignUp.isSignIn) {
-      if (signInSignUp.userName) {
+  const onClickSigin = async () => {
+    if (isSignIn) {
+      if (userName) {
         setSignInSignUp({ ...signInSignUp, loading: true });
-        if (await checkUserNameExists(signInSignUp.userName)) {
+        if (await checkUserNameExists(userName)) {
           setSignInSignUp({
             ...signInSignUp,
             loading: false,
             isPassInpHidden: false,
           });
           setTimeout(() => {
-            signInSignUp.passwordRef.current.focus();
+            passwordRef.current.focus();
           }, 100);
         } else {
           setSignInSignUp({ ...signInSignUp, isUserFound: false });
@@ -114,9 +114,9 @@ const SignInSiginUpScreen = () => {
     <>
       <LoginSignUp {...loginFormProps}>
         <BasicForm {...basicFormProps}>
-          {signInSignUp.isSignIn ? (
+          {isSignIn ? (
             <Login>
-              <BasicFormBtn onClick={onClickContinue} />
+              <BasicFormBtn onClick={onClickSigin} />
             </Login>
           ) : (
             <SignUp {...{ passwordRef }}>
