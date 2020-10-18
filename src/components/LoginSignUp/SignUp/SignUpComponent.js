@@ -5,6 +5,7 @@ import { Form, Input } from "antd";
 import { LockOutlined } from "@ant-design/icons";
 
 const SignUp = ({ children, passwordRef}) => {
+  
   const MSG_PASS_REQUIRED = "confirm password required ";
   const MSG_PASS_NOT_MATCH="The two passwords that you entered do not match!";
   

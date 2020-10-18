@@ -3,7 +3,13 @@ import { Button } from "antd";
 import "./LoginSignUpStyles.scss";
 import Form from "antd/lib/form/Form";
 
-const LoginSignUp = ({ toggleSignInSignUp, signInSignUp,formRef, children,onSubmit}) => {
+const LoginSignUp = ({
+  toggleSignInSignUp,
+  signInSignUp,
+  formRef,
+  children,
+  onSubmit,
+}) => {
   const [animation, setAnimation] = useState(null);
   const { explanation, link } = signInSignUp.formFooter;
   return (

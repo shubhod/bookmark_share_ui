@@ -71,7 +71,6 @@ const SignInSiginUpScreen = () => {
   };
 
   const onClickSigin = async () => {
-    await registerUser({userName:"dsajdhsjkadhsakjd",password:"blalalala"});
     if (userName) {
       setSignInSignUp({ ...signInSignUp, loading: true });
       if (await checkUserNameExists(userName)) {

@@ -15,7 +15,6 @@ const BasicForm = ({
   const MSG_USER_NAME_REQUIRED = "Please input your Username!";
   const MSG_USER_ALREADY_EXISTS = "user already exists";
   const MSG_PASS_REQUIRED = "Please input your Password";
-  const MSG_STRONG_PASS_SUCCESS = "strong password";
   const MSG_STRONG_PASS_FAILURE ="A strong password is at least 8 characters long and includes uppercase and lowercase letters, numbers, and symbols.";
   const MSG_INVALID_EMAIL="not a valid email";
  
