@@ -104,8 +104,7 @@ const SignInSiginUpScreen = () => {
     }
   };
   const onSubmit=async(values)=>{
-    let {confirmPassword,...normalisedValues}=values;
-    await registerUser(normalisedValues);
+    console.log(values);
   }
 
   const basicFormProps = {
