@@ -2,7 +2,7 @@ import { httpRequest } from "../../../helper/httpRequest";
 
 export const checkUserNameExists = async (userName) => {
   try {
-    let httpResponse=await httpRequest(`/checkUserExists/${userName}`, "get");
+    let httpResponse=await httpRequest(`/checkUserExists/${userName}`,"get");
     return httpResponse.data.isUser;
   } catch (error) { 
       throw new Error(error.message);
@@ -10,8 +10,7 @@ export const checkUserNameExists = async (userName) => {
 };
 export const registerUser = async (body) => {
   try {
-    
-    await httpRequest('/registerUser',"post",body);
+   return  await httpRequest('/registerUser',"post",body);
   } catch (error) {
     console.log(error.message);
   }
