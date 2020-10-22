@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Layout, Space, Input } from "antd";
+import React from "react";
+import {Input } from "antd";
 import "./ScssTextEditorInputArea.scss";
 import { useSelector } from "react-redux";
 import { useEditorInputAreaContext } from "../../../screens/EditorContainer/Context/EditorContext";
@@ -17,12 +17,13 @@ export default (props) => {
   });
 
   return (
+    <>
     <div className="editor-input-area">
       <div className="editor-input-area__content">
         <Input
           bordered={false}
           value={
-            allNotes[allNotesCurrentIndex].header == "untitled"
+            allNotes[allNotesCurrentIndex].header === "untitled"
               ? null
               : allNotes[allNotesCurrentIndex].header
           }
@@ -33,6 +34,7 @@ export default (props) => {
             event.persist();
           }}
         />
+        
         <div
           contentEditable
           className="card"
@@ -48,5 +50,6 @@ export default (props) => {
         />
       </div>
     </div>
+    </>
   );
 };

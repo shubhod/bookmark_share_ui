@@ -32,7 +32,7 @@ $background-gradient: linear-gradient(
   height: 100%;
   color: white;
   border-radius: 5px;
-  box-shadow: 6px -5px 24px -4px rgba(0,0,0,0.75);
+  box-shadow: 6px -5px 24px -4px rgba(0, 0, 0, 0.75);
   background: rgba(219, 22, 47, 0.6);
   order: 1;
 
@@ -46,7 +46,7 @@ $background-gradient: linear-gradient(
   }
   #{&}__header__tagline {
     margin-top: -4vw;
-    color: white; 
+    color: white;
   }
   #{&}__header__tagline > p:nth-child(1) {
     font-size: 2.5vw;
@@ -66,6 +66,36 @@ $background-gradient: linear-gradient(
     animation-duration: 2s;
     width: 70%;
   }
+  .ant-input-affix-wrapper {
+    background: rgba(219, 22, 47, 0.01);
+    // box-shadow: -7px 10px 24px -1px rgba(0, 0, 0, 0.9);
+    font-family: $Raleway;
+    color: white;
+    width: 100%;
+  }
+  .ant-btn {
+    border: none;
+    font-family: $Catamaran;
+    background: #b74639 $imp;
+    box-shadow: -7px 10px 24px -1px rgba(0, 0, 0, 0.9);
+    color: white;
+    height: 5.5vh;
+    &:hover {
+      border: none;
+      background: none;
+    }
+  }
+  .ant-form-item-explain {
+    color: white $imp;
+    font-family: $Raleway;
+    text-align: left $imp;
+    font-size: 0.8vw;
+  }
+
+  input {
+    background: rgba(219, 22, 47, 0.01);
+    color: white;
+  }
 }
 
 .login_tag-line {
@@ -83,14 +113,6 @@ $background-gradient: linear-gradient(
   padding-top: 10%;
   padding-left: 5%;
 }
-.ant-input-affix-wrapper {
-  background: rgba(219, 22, 47, 0.01);
-  // box-shadow: -7px 10px 24px -1px rgba(0, 0, 0, 0.9);
-  font-family: $Raleway;
-  color: white;  
-  width: 100%;
-}
-
 
 .form-footer {
   display: flex;
@@ -108,29 +130,4 @@ $background-gradient: linear-gradient(
     cursor: pointer;
   }
 }
-
-.ant-btn {
-  border: none;
-  font-family: $Catamaran;
-  background: #b74639 $imp;
-  box-shadow: -7px 10px 24px -1px rgba(0, 0, 0, 0.9);
-  color: white;  
-  height: 5.5vh;
-  &:hover {
-    border: none;
-    background: none;
-  }
-}
-.ant-form-item-explain {
-  color: white $imp;
-  font-family: $Raleway;
-  text-align: left $imp;
-  font-size: 0.8vw;
-}
-.ant-input{
-  background: rgba(219, 22, 47, 0.01);
-  color: white;
-
-}
-
 

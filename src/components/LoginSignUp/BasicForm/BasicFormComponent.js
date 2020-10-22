@@ -53,6 +53,7 @@ const BasicForm = ({
 
       >
         <Input
+          className="form-input"
           prefix={<UserOutlined className="site-form-item-icon" />}
           placeholder={isSignIn?"userName":"Email"}
           ref={userNameRef}
@@ -84,6 +85,7 @@ const BasicForm = ({
         ]}
       >
         <Input
+          className="form-input"
           ref={passwordRef}
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"

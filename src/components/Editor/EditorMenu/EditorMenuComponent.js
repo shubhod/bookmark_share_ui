@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React  from "react";
 import { CaretDownOutlined } from "@ant-design/icons";
 import {  Menu } from "antd";
 import { GenerateMenuItems } from "./GenerateMenuItems";
@@ -9,11 +9,11 @@ const { SubMenu } = Menu;
 const EditorMenuComponent = (props) => {
   const { fontControl } = useEditorMenuContext();
 
-  let MenuItems = GenerateMenuItems(Object.keys(EDITOR_MENU_ICONS), "menu");
+  let MenuItems = GenerateMenuItems(Object.keys(EDITOR_MENU_ICONS),"menu");
 
-  let subMenuFontName = GenerateMenuItems(FONT_FAMILY, "fontName");
+  let subMenuFontName = GenerateMenuItems(FONT_FAMILY,"fontName");
 
-  let subMenuFontSize = GenerateMenuItems([...Array(7)], "fontSize");
+  let subMenuFontSize = GenerateMenuItems([...Array(7)],"fontSize");
   return (
     <Menu
       selectable={false}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Sider from "antd/lib/layout/Sider";
 import "./SideBarStyles.scss";
 import SideBarHeader from "./SideBarHeaderComponent";

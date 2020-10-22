@@ -16,8 +16,6 @@ import {
 } from "./Methods/editorAreaMethods";
 import EditorContext from "./Context/EditorContext";
 
-// export const EditorContext = React.createContext();
-// export const EditoMenuContext=React.createContext();
 
 const Editor = () => {
   // dispatcher instance
@@ -59,8 +57,6 @@ const Editor = () => {
   },[allNotes.length]);
 
 
-  const [state, setstate] = useState(0);
-
   //event handlers and logic
   const onClickNotes = (event, title, index) => {
     toggleFocusOfNotes(event, title, previousNotesRef, currentNoteRef);
@@ -85,11 +81,11 @@ const Editor = () => {
     editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
   };
   const onInputEditor = (event) => {
-    // let notes = {
-    //   ...allNotes[allNotesCurrentIndex],
-    //   content:event.target.innerHTML
-    // };
-    // editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
+    let notes = {
+      ...allNotes[allNotesCurrentIndex],
+      content:event.target.innerHTML
+    };
+    editorDispatch(editNotesAction(notes, allNotesCurrentIndex));
 
   };
 

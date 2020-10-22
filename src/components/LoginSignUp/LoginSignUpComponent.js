@@ -51,6 +51,7 @@ const LoginSignUp = ({
         <div className={`login__input-area__content  ${animation}`}>
           <Form
             ref={formRef}
+            className="sigInSignUp"
             name="normal_login"
             initialValues={{
               remember: false,
