@@ -2,14 +2,16 @@
   height: 100%;
   flex-basis: 40%;
   display: flex;
-  overflow-y: hidden;
   flex-direction:column;
   position: relative;
   background-color: #f0f0f0;
   &__content {
     height:100%;
-    &:hover {
-      overflow-y: scroll;
+    overflow-y: scroll;
+    &:hover {    
+      &::-webkit-scrollbar-thumb {
+        background-color: #808080; 
+      }
     }
 
     &::-webkit-scrollbar {
@@ -17,7 +19,8 @@
       background-color: #f0f0f0;
     }
     &::-webkit-scrollbar-thumb {
-      background-color: #808080;
+      background-color: #f0f0f0;
+      
     }
   }
 }
