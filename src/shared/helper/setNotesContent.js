@@ -1,4 +1,4 @@
-import { MONTHS } from "../constants";
+import { MONTHS } from "../../constants";
 const defaultNote={header:"untitled",content:null};
 export const setNotesContent=(notes)=>{
     let date=new Date();

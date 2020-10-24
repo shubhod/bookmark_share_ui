@@ -4,7 +4,7 @@ import { SIDEBAR_MENU_ITEMS, SIDE_BAR_MENU_ICONS, MONTHS } from "./constants";
 import { MainNavContext } from "./MainNavContext";
 import { useDispatch } from "react-redux";
 import { addNoteAction } from "./mainNavRedux/MainNavActions";
-import { setNotesContent } from "../../helper/setNotesContent";
+import { setNotesContent } from "../../shared/helper/setNotesContent";
 const MainNav = () => {
   const mainNavDispatch=useDispatch();
   const onClickAddNotes=(event)=>{

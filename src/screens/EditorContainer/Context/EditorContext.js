@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { useContextFactory } from "../../../helper/useContextFactory";
+import { useContextFactory } from "../../../shared/helper/useContextFactory";
 const EditorNotesContext = createContext(null, (prev, next) => {
   return prev.allNotesCurrentIndex === next.allNotesCurrentIndex ? 0 : 1;
 });

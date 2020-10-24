@@ -10,7 +10,7 @@ const NotesIndex = (props) => {
   return (
     <div className="allNotes">
       <Notes
-        headerStyle={{ fontSize: "20px" }}
+        headerStyle={{ fontSize: "20px"}}
         notes={[
           {
             header: "All Notes",

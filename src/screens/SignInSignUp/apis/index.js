@@ -1,4 +1,4 @@
-import { httpRequest } from "../../../helper/httpRequest";
+import { httpRequest } from "../../../shared/helper/httpRequest";
 
 export const checkUserNameExists = async (userName) => {
   try {

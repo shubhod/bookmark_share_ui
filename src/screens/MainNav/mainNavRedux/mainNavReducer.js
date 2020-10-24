@@ -1,5 +1,5 @@
 import { ADD_NOTES, EDIT_NOTES } from "./MainNavActionTypes";
-import { setNotesContent } from "../../../helper/setNotesContent";
+import { setNotesContent } from "../../../shared/helper/setNotesContent";
 // const initialState={
 //   allNotes:[]
 // };

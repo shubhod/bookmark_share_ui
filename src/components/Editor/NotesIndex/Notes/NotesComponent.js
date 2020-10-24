@@ -3,7 +3,6 @@ import "./NotesStyles.scss";
 import { useEditorNotesContext } from "../../../../screens/EditorContainer/Context/EditorContext";
 const Notes = (props) => {
   const notes = props.notes;
-  console.log("notes");
   const {currentNoteRef,onClickNotes} =useEditorNotesContext();
   const newNotes = [];
   let newArrayIndex=0;
@@ -13,7 +12,7 @@ const Notes = (props) => {
       <div
         key={note.header + index}
         ref={currentNoteRef}
-        className="notes"
+        className="notes" 
         style={props.style}
         onClick={(event)=>{onClickNotes(event,note.header,index);}}
       >
@@ -27,7 +26,6 @@ const Notes = (props) => {
         </div>
       </div>
     );
-    
     newArrayIndex++;
   }
   return newNotes;
@@ -36,11 +34,7 @@ export default React.memo(Notes,(prev,next)=>{
   if(prev.notes.length){
     console.log(prev.notes.length,next.notes.length);
   }
-  // if(prev){
-    
-  // }
-  return prev.notes.length==next.notes.length;
-  // return true;
+  return prev.notes.length===next.notes.length;
 });
 
 

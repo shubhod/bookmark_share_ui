@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { checkUserNameExists, registerUser } from "./apis";
-import { useInitialState } from "../../helper/useInitialState";
+import { useInitialState } from "../../shared/helper/useInitialState";
 import BasicForm from "../../components/LoginSignUp/BasicForm/BasicFormComponent";
 import BasicFormBtn from "../../components/LoginSignUp/BasicForm/BasicFormBtnComponent";
 import Login from "../../components/LoginSignUp/Login/LoginComponent";
@@ -105,15 +105,13 @@ const SignInSiginUpScreen = (props) => {
       });
     }
   };
-  
+
   const onSubmit = async (values) => {
     if (!isSignIn) {
       const { confirmPassword, ...finalValues } = values;
       try {
-
         let userRegistrationReponse = await registerUser(finalValues);
         storeAuthToken(userRegistrationReponse.data.token);
-
       } catch (error) {
         alert("something went wrong");
       }
