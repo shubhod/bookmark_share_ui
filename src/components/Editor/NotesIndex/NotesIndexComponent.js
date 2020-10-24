@@ -10,7 +10,8 @@ const NotesIndex = (props) => {
   return (
     <div className="allNotes">
       <Notes
-        headerStyle={{ fontSize: "20px"}}
+        className="allNotes__header"
+        headerStyle={{ fontSize: "20px" }}
         notes={[
           {
             header: "All Notes",
@@ -19,7 +20,9 @@ const NotesIndex = (props) => {
           },
         ]}
       />
-      <Notes notes={[...allNotes]} />
+      <div className="">
+        <Notes notes={[...allNotes]} />
+      </div>
     </div>
   );
 };

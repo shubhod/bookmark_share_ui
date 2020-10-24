@@ -62,7 +62,7 @@ export const GenerateMenuItems = (
 
   const genericMenuItems = (controlName, index) => {
     let contextEditorCmdObj = { contextEditorCmd: onClickEditorMenuItem };
-    if (controlName == "image") {
+    if (controlName ==="image") {
       return (
         <Menu.Item
           key={index + controlName}
@@ -96,11 +96,11 @@ export const GenerateMenuItems = (
     });
   };
   let menuItem = null;
-  if (menuType == "menu") {
+  if (menuType === "menu") {
     menuItem = menuManager(genericMenuItems);
-  } else if (menuType == "fontName") {
+  } else if (menuType === "fontName") {
     menuItem = menuManager(fontFamily);
-  } else if (menuType == "fontSize") {
+  } else if (menuType === "fontSize") {
     menuItem = menuManager(fontSize);
   }
 

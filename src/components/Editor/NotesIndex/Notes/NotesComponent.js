@@ -3,17 +3,18 @@ import "./NotesStyles.scss";
 import { useEditorNotesContext } from "../../../../screens/EditorContainer/Context/EditorContext";
 const Notes = (props) => {
   const notes = props.notes;
-  const {currentNoteRef,onClickNotes} =useEditorNotesContext();
+  const {currentNoteRef,onClickNotes} =useEditorNotesContext(); 
   const newNotes = [];
   let newArrayIndex=0;
+  let classString="notes";
+  if(props.className) classString=`${classString} ${props.className}`;
   for (let index=notes.length - 1;index >=0; index--) {
     let note = notes[index];    
     newNotes[newArrayIndex] = (
       <div
         key={note.header + index}
         ref={currentNoteRef}
-        className="notes" 
-        style={props.style}
+        className={classString} 
         onClick={(event)=>{onClickNotes(event,note.header,index);}}
       >
         <div className="notes__header" style={props.headerStyle}>

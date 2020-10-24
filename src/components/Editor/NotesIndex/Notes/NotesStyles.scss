@@ -41,7 +41,7 @@ $notes_bgColor:	#F0F0F0	;
   #{&}__content {
     margin-top: 15px;
     position: absolute;
-    padding-bottom: 20px;
+    padding-bottom:20px;
     color:#53917E;
     font-weight:400px;
     @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 2, $bgColor:$notes_bgColor);  
