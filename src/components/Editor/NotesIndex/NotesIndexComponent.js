@@ -20,7 +20,7 @@ const NotesIndex = (props) => {
           },
         ]}
       />
-      <div className="">
+      <div className="allNotes__content">
         <Notes notes={[...allNotes]} />
       </div>
     </div>
