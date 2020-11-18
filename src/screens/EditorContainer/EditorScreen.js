@@ -97,7 +97,6 @@ const Editor = () => {
     onInputNotesTitle,
     contentEditableRef,
     allNotesCurrentIndex,
-      
   };
 
   //view

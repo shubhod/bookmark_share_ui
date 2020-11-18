@@ -1,6 +1,5 @@
 import React from "react";
 import "./SignUpnStyles.scss";
-
 import { Form, Input } from "antd";
 import { LockOutlined } from "@ant-design/icons";
 

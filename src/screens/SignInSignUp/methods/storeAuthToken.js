@@ -1,4 +1,4 @@
-import { cookies } from "../../../shared/helper/cookies";
+import { cookies } from "../../../shared/helper/auth";
 
 export const storeAuthToken = (token) => {
     let cookie=cookies.getInstance();

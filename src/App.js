@@ -4,10 +4,10 @@ import Editor from "./screens/EditorContainer/EditorScreen";
 import "./App.css";
 import SignInSiginUpScreen from "./screens/SignInSignUp/SignInSignUpScreen";
 const App = () => {
+
   return (
     <div className="appContainer">
-      <MainNav/>
-      <Editor/>
+      <SignInSiginUpScreen />
     </div>
   );
 };

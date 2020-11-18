@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button } from "antd";
 import "./LoginSignUpStyles.scss";
 import Form from "antd/lib/form/Form";
+import SocialButton from '../SocialButton/SocialButton';
 
 const LoginSignUp = ({
   toggleSignInSignUp,
@@ -9,6 +9,8 @@ const LoginSignUp = ({
   formRef,
   children,
   onSubmit,
+  onSocialLoginSuccess,
+  onSocialLoginFailure
 }) => {
   const [animation, setAnimation] = useState(null);
   const { explanation, link } = signInSignUp.formFooter;
@@ -34,19 +36,12 @@ const LoginSignUp = ({
               <strong>prepare your content in no time</strong>
             </p>
           </div>
-          <Button
-            block
-            className="login__input-area__btn-google"
-            icon={
-              <img
-                alt=""
-                style={{ height: "30px" }}
-                src="/images/loginScreen/googleIcon.png"
-              />
-            }
-          >
-            Continue with google
-          </Button>
+          <SocialButton
+            provider="google"
+            className="google"
+            onSuccess={onSocialLoginSuccess.bind({provider:"google"})}
+            onSocialLoginFailure={onSocialLoginFailure}
+          />
         </div>
         <div className={`login__input-area__content  ${animation}`}>
           <Form

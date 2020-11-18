@@ -9,7 +9,7 @@ const Login = ({children}) => {
       <div className="login-remember" >
       <Form.Item name="remember" valuePropName="checked" noStyle>
           <Checkbox>Remember me</Checkbox>
-        </Form.Item>         
+        </Form.Item>
       </div>
       </>
 

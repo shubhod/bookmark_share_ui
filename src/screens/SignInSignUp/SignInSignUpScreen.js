@@ -6,7 +6,6 @@ import BasicFormBtn from "../../components/LoginSignUp/BasicForm/BasicFormBtnCom
 import Login from "../../components/LoginSignUp/Login/LoginComponent";
 import LoginSignUp from "../../components/LoginSignUp/LoginSignUpComponent";
 import SignUp from "../../components/LoginSignUp/SignUp/SignUpComponent";
-import { storeAuthToken } from "./methods/storeAuthToken";
 
 const SignInSiginUpScreen = (props) => {
   const formSignUpFooter = {
@@ -29,6 +28,7 @@ const SignInSiginUpScreen = (props) => {
     passwordRef: useRef(),
     isUserFound: true,
     loading: false,
+    provider:null
   });
   const {
     isSignIn,
@@ -70,24 +70,20 @@ const SignInSiginUpScreen = (props) => {
   };
 
   const onClickSigin = async () => {
-    // if (userName) {
-    //   setSignInSignUp({ ...signInSignUp, loading: true });
-    //   if (await checkUserNameExists(userName)){
-    //     setSignInSignUp({
-    //       ...signInSignUp,
-    //       isPassInpHidden: false,
-    //     });
-    //     setTimeout(() => {
-    //       passwordRef.current.focus();
-    //     }, 100);
-    //   } else {
-    //     setSignInSignUp({ ...signInSignUp, isUserFound: false });
-    //   }
-    //
-    // const finalValues = {
-    //   userName: "deep.221@gmail.com",
-    //   password: "asdasd$5DEp21",
-    // };
+    if (userName) {
+      setSignInSignUp({ ...signInSignUp, loading: true });
+      if (await checkUserNameExists(userName)) {
+        setSignInSignUp({
+          ...signInSignUp,
+          isPassInpHidden: false,
+        });
+        setTimeout(() => {
+          passwordRef.current.focus();
+        }, 100);
+      } else {
+        setSignInSignUp({ ...signInSignUp, isUserFound: false });
+      }
+    }
   };
 
   const onInpUsrName = async (event) => {
@@ -106,18 +102,24 @@ const SignInSiginUpScreen = (props) => {
     }
   };
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (formData) => {
     if (!isSignIn) {
-      const { confirmPassword, ...finalValues } = values;
+      delete formData.confirmPassword;
+      formData.accountType = "local";
       try {
-        let userRegistrationReponse = await registerUser(finalValues);
-        storeAuthToken(userRegistrationReponse.data.token);
+        registerUser(formData);
       } catch (error) {
         alert("something went wrong");
       }
     } else {
       console.log("...login submit");
     }
+  };
+  function onSocialLoginSuccess(data){
+    registerUser({tokenId:data.tokenId,provider:"google",accountType:"social"});
+  };
+  const onSocialLoginFailure = (data) => {
+    console.log(data);
   };
 
   const basicFormProps = {
@@ -134,6 +136,8 @@ const SignInSiginUpScreen = (props) => {
     signInSignUp,
     formRef,
     onSubmit,
+    onSocialLoginSuccess,
+    onSocialLoginFailure,
   };
 
   return (
