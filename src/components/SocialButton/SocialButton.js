@@ -4,6 +4,9 @@ import GoogleLogin from "react-google-login";
 import { GOOGLE_CLIENT_ID } from '../../shared/helper/constants';
 const SocialButton = ({ render, provider, onSuccess, onFailure }) => {
   let socialAccount = null;
+
+  //google client id not available
+
   const DefaultButton = ({ onClick, disabled }) => {
     return (
       <Button
